@@ -32,91 +32,100 @@ export class DisplayComponent implements OnInit {
     this.wsService.subject.subscribe(observer => {
       //기기별로 ecg, res, hr 데이터 만들어서 새로운 데이터에 넣기
       if (observer.dv === this.deviceInfos.deviceAddress) {
-        // 데이터 길이를 500으로 맞추기
         //for ecg
-        for (let i = 0; i < 5; i++) {
-          this.ecgData[5 * ecgIndex + i] = {
-            ts: 40 * ecgIndex + 8 * i,
-            val: observer.dp.ecg[i]
-          };
+        {
+          for (let i = 0; i < 5; i++) {
+            this.ecgData[5 * ecgIndex + i] = {
+              ts: 40 * ecgIndex + 8 * i,
+              val: observer.dp.ecg[i]
+            };
+          }
+  
+          switch (ecgIndex) {
+            case 99:
+              ecgIndex = -1;
+              break;
+            case 98:
+              for (let i = 0; i < 5; i++) {
+                this.ecgData[5 * ecgIndex + 5 + i] = { ts: 40 * ecgIndex + (40 + 8 * i), val: undefined };
+              }
+              break;
+            case 97:
+              for (let i = 0; i < 10; i++) {
+                this.ecgData[5 * ecgIndex + 5 + i] = { ts: 40 * ecgIndex + (40 + 8 * i), val: undefined };
+              }
+              break;
+            default:
+              for (let i = 0; i < 15; i++) {
+                this.ecgData[5 * ecgIndex + 5 + i] = { ts: 40 * ecgIndex + (40 + 8 * i), val: undefined };
+              }
+              break;
+          }
+          ecgIndex++;
         }
-
-        switch (ecgIndex) {
-          case 99:
-            ecgIndex = -1;
-            break;
-          case 98:
-            for (let i = 0; i < 5; i++) {
-              this.ecgData[5 * ecgIndex + 5 + i] = { ts: 40 * ecgIndex + (40 + 8 * i), val: undefined };
-            }
-            break;
-          case 97:
-            for (let i = 0; i < 10; i++) {
-              this.ecgData[5 * ecgIndex + 5 + i] = { ts: 40 * ecgIndex + (40 + 8 * i), val: undefined };
-            }
-            break;
-          default:
-            for (let i = 0; i < 15; i++) {
-              this.ecgData[5 * ecgIndex + 5 + i] = { ts: 40 * ecgIndex + (40 + 8 * i), val: undefined };
-            }
-            break;
-        }
-        ecgIndex++;
 
         //for respiration
-        this.resData[otherIndex] = { val: observer.dp.F1, ts: otherIndex * 40 };
-        switch (otherIndex) {
-          case 499: otherIndex = -1; break;
-          case 498:
-            this.resData[otherIndex + 1] = { val: undefined, ts: otherIndex * 40 };
-            break;
-          case 497:
-            for (let i = 1; i < 3; i++) {
-              this.resData[otherIndex + i] = { val: undefined, ts: (otherIndex + i) * 40 };
-            }
-            break;
-          case 496:
-            for (let i = 1; i < 4; i++) {
-              this.resData[otherIndex + i] = { val: undefined, ts: (otherIndex + i) * 40 };
-            }
-            break;
-          case 495:
-            for (let i = 1; i < 5; i++) {
-              this.resData[otherIndex + i] = { val: undefined, ts: (otherIndex + i) * 40 };
-            }
-            break;
-          case 494:
-            for (let i = 1; i < 6; i++) {
-              this.resData[otherIndex + i] = { val: undefined, ts: (otherIndex + i) * 40 };
-            }
-            break;
-          case 493:
-            for (let i = 1; i < 7; i++) {
-              this.resData[otherIndex + i] = { val: undefined, ts: (otherIndex + i) * 40 };
-            }
-            break;
-          case 492:
-            for (let i = 1; i < 8; i++) {
-              this.resData[otherIndex + i] = { val: undefined, ts: (otherIndex + i) * 40 };
-            }
-            break;
-          case 491:
-            for (let i = 1; i < 9; i++) {
-              this.resData[otherIndex + i] = { val: undefined, ts: (otherIndex + i) * 40 };
-            }
-            break;
-          default:
-            for (let i = 1; i < 9; i++) {
-              this.resData[otherIndex + i] = { val: undefined, ts: (otherIndex + i) * 40 };
-            }
-            break;
+        {
+          this.resData[otherIndex] = { val: observer.dp.F1, ts: otherIndex * 40 };
+          switch (otherIndex) {
+            case 499: otherIndex = -1; break;
+            case 498:
+              this.resData[otherIndex + 1] = { val: undefined, ts: otherIndex * 40 };
+              break;
+            case 497:
+              for (let i = 1; i < 3; i++) {
+                this.resData[otherIndex + i] = { val: undefined, ts: (otherIndex + i) * 40 };
+              }
+              break;
+            case 496:
+              for (let i = 1; i < 4; i++) {
+                this.resData[otherIndex + i] = { val: undefined, ts: (otherIndex + i) * 40 };
+              }
+              break;
+            case 495:
+              for (let i = 1; i < 5; i++) {
+                this.resData[otherIndex + i] = { val: undefined, ts: (otherIndex + i) * 40 };
+              }
+              break;
+            case 494:
+              for (let i = 1; i < 6; i++) {
+                this.resData[otherIndex + i] = { val: undefined, ts: (otherIndex + i) * 40 };
+              }
+              break;
+            case 493:
+              for (let i = 1; i < 7; i++) {
+                this.resData[otherIndex + i] = { val: undefined, ts: (otherIndex + i) * 40 };
+              }
+              break;
+            case 492:
+              for (let i = 1; i < 8; i++) {
+                this.resData[otherIndex + i] = { val: undefined, ts: (otherIndex + i) * 40 };
+              }
+              break;
+            case 491:
+              for (let i = 1; i < 9; i++) {
+                this.resData[otherIndex + i] = { val: undefined, ts: (otherIndex + i) * 40 };
+              }
+              break;
+            default:
+              for (let i = 1; i < 9; i++) {
+                this.resData[otherIndex + i] = { val: undefined, ts: (otherIndex + i) * 40 };
+              }
+              break;
+          }
+          otherIndex++;
         }
 
+        //for hr
+        {
+          document.querySelector(`#hr_${this.index} .value`)!.innerHTML = `${observer.dp.hr.current}bpm`;
+          // observer.dp.hr.min;
+          // observer.dp.hr.max;
+        }
+        
         //for heart rate
         // this.hrData[otherIndex] = { val: observer.dp.hr, ts: otherIndex * 40 };
         // this.hrData[otherIndex + 1] = { val: undefined, ts: otherIndex * 40 };
-
-        otherIndex++;
 
         this.drawResChart(this.resData, this.index);
         this.drawEcgChart(this.ecgData, this.index);
