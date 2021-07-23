@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+        HiCardi - Central Monitoring System
+    </div>
+    <div class="content">
+        <div class="content-inner">
+            <div class="content-header">Hicardi</div>
+            <div class="content-form">
+                <input type="text" placeholder="Account" class="id" [(ngModel)]="id">
+                <input type="password" placeholder="Password" class="pwd" [(ngModel)]="pwd">
+                <button class="signin" (click)="login()">SIGN IN</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer">Logo</div>
+
+</body>
+</html>

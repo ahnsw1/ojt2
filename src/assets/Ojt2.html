@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!-- saved from url=(0026)http://localhost:4200/main -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Ojt2</title>
+  <!--<base href="/">--><base href=".">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="http://localhost:4200/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+<link rel="stylesheet" href="./Ojt2_files/styles.css"><style>
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAuY29tcG9uZW50LmNzcyJ9 */</style><style>.top_header[_ngcontent-wvh-c54] {
+    display: flex;
+    margin-top: 10px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.top_header[_ngcontent-wvh-c54]   .logo[_ngcontent-wvh-c54] {
+    display: flex;
+    font-size: .7rem;
+    color: red;
+    position: absolute;
+}
+
+.logo[_ngcontent-wvh-c54]   img[_ngcontent-wvh-c54] {
+    height: 15px;
+}
+
+.top_header[_ngcontent-wvh-c54]   .date[_ngcontent-wvh-c54] {
+    margin: 0 auto;
+}
+
+.content[_ngcontent-wvh-c54] {
+    display: flex;
+    width: 99%;
+    height: 95%;
+    margin-top: 5px;
+    background-color: #343a40;
+}
+
+.content[_ngcontent-wvh-c54]   .display_content[_ngcontent-wvh-c54] {
+    width: 80%;
+    display: flex;
+    height: 100%;
+}
+
+.display_content[_ngcontent-wvh-c54]   .display_content-left[_ngcontent-wvh-c54], .display_content[_ngcontent-wvh-c54]   .display_content-right[_ngcontent-wvh-c54] {
+    width: 50%;
+    margin-right: 5px;
+}
+
+.display_content-left[_ngcontent-wvh-c54], .display_content-right[_ngcontent-wvh-c54] {
+    display: flex;
+    flex-direction: column;
+}
+
+.display[_ngcontent-wvh-c54] {
+    height: 25%;
+    border: solid .1px rgba(211, 211, 211, 0.493);
+    margin-top: 5px;
+    background-color: black;
+}
+
+.display_0[_ngcontent-wvh-c54], .display_4[_ngcontent-wvh-c54] {
+    margin-top: 0;
+}
+
+.content[_ngcontent-wvh-c54]   .other_content[_ngcontent-wvh-c54] {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 100%;
+}
+
+.other_content[_ngcontent-wvh-c54]   .map[_ngcontent-wvh-c54] {
+    height: 30%;
+    margin-bottom: 5px;
+    border: solid .1px rgba(211, 211, 211, 0.493);
+    background-color: black;
+}
+
+.other_content[_ngcontent-wvh-c54]   .detect[_ngcontent-wvh-c54] {
+    height: 70%;
+    border: solid .1px rgba(211, 211, 211, 0.493);
+    background-color: black;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixnQkFBZ0I7SUFDaEIsbUJBQW1CO0lBQ25CLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLGFBQWE7SUFDYixnQkFBZ0I7SUFDaEIsVUFBVTtJQUNWLGtCQUFrQjtBQUN0Qjs7QUFFQTtJQUNJLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxjQUFjO0FBQ2xCOztBQUVBO0lBQ0ksYUFBYTtJQUNiLFVBQVU7SUFDVixXQUFXO0lBQ1gsZUFBZTtJQUNmLHlCQUF5QjtBQUM3Qjs7QUFFQTtJQUNJLFVBQVU7SUFDVixhQUFhO0lBQ2IsWUFBWTtBQUNoQjs7QUFFQTtJQUNJLFVBQVU7SUFDVixpQkFBaUI7QUFDckI7O0FBRUE7SUFDSSxhQUFhO0lBQ2Isc0JBQXNCO0FBQzFCOztBQUVBO0lBQ0ksV0FBVztJQUNYLDZDQUE2QztJQUM3QyxlQUFlO0lBQ2YsdUJBQXVCO0FBQzNCOztBQUVBO0lBQ0ksYUFBYTtBQUNqQjs7QUFFQTtJQUNJLGFBQWE7SUFDYixzQkFBc0I7SUFDdEIsVUFBVTtJQUNWLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxXQUFXO0lBQ1gsa0JBQWtCO0lBQ2xCLDZDQUE2QztJQUM3Qyx1QkFBdUI7QUFDM0I7O0FBRUE7SUFDSSxXQUFXO0lBQ1gsNkNBQTZDO0lBQzdDLHVCQUF1QjtBQUMzQiIsImZpbGUiOiJtYWluLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudG9wX2hlYWRlciB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBtYXJnaW4tdG9wOiAxMHB4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLnRvcF9oZWFkZXIgLmxvZ28ge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZm9udC1zaXplOiAuN3JlbTtcbiAgICBjb2xvcjogcmVkO1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbn1cblxuLmxvZ28gaW1nIHtcbiAgICBoZWlnaHQ6IDE1cHg7XG59XG5cbi50b3BfaGVhZGVyIC5kYXRlIHtcbiAgICBtYXJnaW46IDAgYXV0bztcbn1cblxuLmNvbnRlbnQge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgd2lkdGg6IDk5JTtcbiAgICBoZWlnaHQ6IDk1JTtcbiAgICBtYXJnaW4tdG9wOiA1cHg7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzM0M2E0MDtcbn1cblxuLmNvbnRlbnQgLmRpc3BsYXlfY29udGVudCB7XG4gICAgd2lkdGg6IDgwJTtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGhlaWdodDogMTAwJTtcbn1cblxuLmRpc3BsYXlfY29udGVudCAuZGlzcGxheV9jb250ZW50LWxlZnQsIC5kaXNwbGF5X2NvbnRlbnQgLmRpc3BsYXlfY29udGVudC1yaWdodCB7XG4gICAgd2lkdGg6IDUwJTtcbiAgICBtYXJnaW4tcmlnaHQ6IDVweDtcbn1cblxuLmRpc3BsYXlfY29udGVudC1sZWZ0LCAuZGlzcGxheV9jb250ZW50LXJpZ2h0IHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG59XG5cbi5kaXNwbGF5IHtcbiAgICBoZWlnaHQ6IDI1JTtcbiAgICBib3JkZXI6IHNvbGlkIC4xcHggcmdiYSgyMTEsIDIxMSwgMjExLCAwLjQ5Myk7XG4gICAgbWFyZ2luLXRvcDogNXB4O1xuICAgIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xufVxuXG4uZGlzcGxheV8wLCAuZGlzcGxheV80IHtcbiAgICBtYXJnaW4tdG9wOiAwO1xufVxuXG4uY29udGVudCAub3RoZXJfY29udGVudCB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIHdpZHRoOiAyMCU7XG4gICAgaGVpZ2h0OiAxMDAlO1xufVxuXG4ub3RoZXJfY29udGVudCAubWFwIHtcbiAgICBoZWlnaHQ6IDMwJTtcbiAgICBtYXJnaW4tYm90dG9tOiA1cHg7XG4gICAgYm9yZGVyOiBzb2xpZCAuMXB4IHJnYmEoMjExLCAyMTEsIDIxMSwgMC40OTMpO1xuICAgIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xufVxuXG4ub3RoZXJfY29udGVudCAuZGV0ZWN0IHtcbiAgICBoZWlnaHQ6IDcwJTtcbiAgICBib3JkZXI6IHNvbGlkIC4xcHggcmdiYSgyMTEsIDIxMSwgMjExLCAwLjQ5Myk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XG59Il19 */</style><style>agm-map[_ngcontent-wvh-c51] {
+  height: 300px;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1hcC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBYTtBQUNmIiwiZmlsZSI6Im1hcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYWdtLW1hcCB7XG4gIGhlaWdodDogMzAwcHg7XG59Il19 */</style><style>
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJkZXRlY3QuY29tcG9uZW50LmNzcyJ9 */</style><style>.display[_ngcontent-wvh-c53] {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.display[_ngcontent-wvh-c53]   .header[_ngcontent-wvh-c53] {
+    display: flex;
+    grid-gap: 20px;
+    gap: 20px;
+    height: 12%;
+    border-bottom: solid .1px rgba(211, 211, 211, 0.493);
+    align-items: center;
+    padding-left: 10px;
+}
+
+.display[_ngcontent-wvh-c53]   .content[_ngcontent-wvh-c53] {
+    display: flex;
+    height: 76%;
+    border-bottom: solid .1px rgba(211, 211, 211, 0.493);
+}
+
+.content[_ngcontent-wvh-c53]   .line_chart[_ngcontent-wvh-c53] {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.line_chart[_ngcontent-wvh-c53]   .line_chart-ecg[_ngcontent-wvh-c53] {
+    border-bottom: solid .1px rgba(211, 211, 211, 0.493);
+    height: 60%;
+}
+
+.line_chart[_ngcontent-wvh-c53]   .line_chart-resp[_ngcontent-wvh-c53] {
+    height: 40%;
+}
+
+.content[_ngcontent-wvh-c53]   .dot_chart[_ngcontent-wvh-c53] {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    
+}
+
+.dot_chart[_ngcontent-wvh-c53]   .dot_chart-heart[_ngcontent-wvh-c53], .dot_chart[_ngcontent-wvh-c53]   .dot_chart-resp[_ngcontent-wvh-c53] {
+    border-left: solid .1px rgba(211, 211, 211, 0.493);
+}
+
+.dot_chart[_ngcontent-wvh-c53]   .dot_chart-up[_ngcontent-wvh-c53] {
+    border-bottom: solid .1px rgba(211, 211, 211, 0.493);
+    width: 100%;
+    height: 50%;
+}
+
+.dot_chart[_ngcontent-wvh-c53]   .dot_chart-down[_ngcontent-wvh-c53] {
+    display: flex;
+    width: 100%;
+    height: 50%;
+}
+
+.dot_chart-down[_ngcontent-wvh-c53]   .dot_chart-resp[_ngcontent-wvh-c53], .dot_chart-down[_ngcontent-wvh-c53]   .dot_chart-temp[_ngcontent-wvh-c53] {
+    width: 50%;
+}
+
+.dot_chart-down[_ngcontent-wvh-c53]   .dot_chart-temp[_ngcontent-wvh-c53] {
+    border-left: solid .1px rgba(211, 211, 211, 0.493);
+}
+
+.display[_ngcontent-wvh-c53]   .footer[_ngcontent-wvh-c53] {
+    height: 12%;
+    display: flex;
+}
+
+.footer[_ngcontent-wvh-c53]   .data[_ngcontent-wvh-c53] {
+    display:  flex;
+    width: 60%;
+    grid-gap: 10px;
+    gap: 10px;
+    align-items: center;
+}
+
+.data[_ngcontent-wvh-c53]   .data-temp[_ngcontent-wvh-c53] {
+    margin-left: 10px;
+}
+
+.footer[_ngcontent-wvh-c53]   .motion_status[_ngcontent-wvh-c53] {
+    display: flex;
+    width: 40%;
+}
+
+.motion_status[_ngcontent-wvh-c53]   .status[_ngcontent-wvh-c53] {
+    display: flex;
+    width: 25%;
+    justify-content: center;
+    border-left: solid .1px rgba(211, 211, 211, 0.493);
+    align-items: center;
+}
+
+.motion_status[_ngcontent-wvh-c53]   .cur_status[_ngcontent-wvh-c53] {
+    background-color: deeppink;
+}
+
+.title[_ngcontent-wvh-c53] {
+    opacity: .5;
+    font-size: .7rem;
+    padding-left: 10px;
+}
+
+i[_ngcontent-wvh-c53] {
+    opacity: .5;
+    font-size: 1.3rem;
+}
+
+.cur_status[_ngcontent-wvh-c53]   i[_ngcontent-wvh-c53]{
+    opacity: 1;
+}
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImRpc3BsYXkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixzQkFBc0I7SUFDdEIsWUFBWTtBQUNoQjs7QUFFQTtJQUNJLGFBQWE7SUFDYixjQUFTO0lBQVQsU0FBUztJQUNULFdBQVc7SUFDWCxvREFBb0Q7SUFDcEQsbUJBQW1CO0lBQ25CLGtCQUFrQjtBQUN0Qjs7QUFFQTtJQUNJLGFBQWE7SUFDYixXQUFXO0lBQ1gsb0RBQW9EO0FBQ3hEOztBQUVBO0lBQ0ksYUFBYTtJQUNiLHNCQUFzQjtJQUN0QixVQUFVO0FBQ2Q7O0FBRUE7SUFDSSxvREFBb0Q7SUFDcEQsV0FBVztBQUNmOztBQUVBO0lBQ0ksV0FBVztBQUNmOztBQUVBO0lBQ0ksYUFBYTtJQUNiLHNCQUFzQjtJQUN0QixVQUFVO0lBQ1Ysa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksa0RBQWtEO0FBQ3REOztBQUVBO0lBQ0ksb0RBQW9EO0lBQ3BELFdBQVc7SUFDWCxXQUFXO0FBQ2Y7O0FBRUE7SUFDSSxhQUFhO0lBQ2IsV0FBVztJQUNYLFdBQVc7QUFDZjs7QUFFQTtJQUNJLFVBQVU7QUFDZDs7QUFFQTtJQUNJLGtEQUFrRDtBQUN0RDs7QUFFQTtJQUNJLFdBQVc7SUFDWCxhQUFhO0FBQ2pCOztBQUVBO0lBQ0ksY0FBYztJQUNkLFVBQVU7SUFDVixjQUFTO0lBQVQsU0FBUztJQUNULG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLGlCQUFpQjtBQUNyQjs7QUFFQTtJQUNJLGFBQWE7SUFDYixVQUFVO0FBQ2Q7O0FBRUE7SUFDSSxhQUFhO0lBQ2IsVUFBVTtJQUNWLHVCQUF1QjtJQUN2QixrREFBa0Q7SUFDbEQsbUJBQW1CO0FBQ3ZCOztBQUVBO0lBQ0ksMEJBQTBCO0FBQzlCOztBQUVBO0lBQ0ksV0FBVztJQUNYLGdCQUFnQjtJQUNoQixrQkFBa0I7QUFDdEI7O0FBRUE7SUFDSSxXQUFXO0lBQ1gsaUJBQWlCO0FBQ3JCOztBQUVBO0lBQ0ksVUFBVTtBQUNkIiwiZmlsZSI6ImRpc3BsYXkuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5kaXNwbGF5IHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgaGVpZ2h0OiAxMDAlO1xufVxuXG4uZGlzcGxheSAuaGVhZGVyIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGdhcDogMjBweDtcbiAgICBoZWlnaHQ6IDEyJTtcbiAgICBib3JkZXItYm90dG9tOiBzb2xpZCAuMXB4IHJnYmEoMjExLCAyMTEsIDIxMSwgMC40OTMpO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgcGFkZGluZy1sZWZ0OiAxMHB4O1xufVxuXG4uZGlzcGxheSAuY29udGVudCB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBoZWlnaHQ6IDc2JTtcbiAgICBib3JkZXItYm90dG9tOiBzb2xpZCAuMXB4IHJnYmEoMjExLCAyMTEsIDIxMSwgMC40OTMpO1xufVxuXG4uY29udGVudCAubGluZV9jaGFydCB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIHdpZHRoOiA2MCU7XG59XG5cbi5saW5lX2NoYXJ0IC5saW5lX2NoYXJ0LWVjZyB7XG4gICAgYm9yZGVyLWJvdHRvbTogc29saWQgLjFweCByZ2JhKDIxMSwgMjExLCAyMTEsIDAuNDkzKTtcbiAgICBoZWlnaHQ6IDYwJTtcbn1cblxuLmxpbmVfY2hhcnQgLmxpbmVfY2hhcnQtcmVzcCB7XG4gICAgaGVpZ2h0OiA0MCU7XG59XG5cbi5jb250ZW50IC5kb3RfY2hhcnQge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICB3aWR0aDogNDAlO1xuICAgIC8qIGhlaWdodDogMTAwJTsgKi9cbn1cblxuLmRvdF9jaGFydCAuZG90X2NoYXJ0LWhlYXJ0LCAuZG90X2NoYXJ0IC5kb3RfY2hhcnQtcmVzcCB7XG4gICAgYm9yZGVyLWxlZnQ6IHNvbGlkIC4xcHggcmdiYSgyMTEsIDIxMSwgMjExLCAwLjQ5Myk7XG59XG5cbi5kb3RfY2hhcnQgLmRvdF9jaGFydC11cCB7XG4gICAgYm9yZGVyLWJvdHRvbTogc29saWQgLjFweCByZ2JhKDIxMSwgMjExLCAyMTEsIDAuNDkzKTtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBoZWlnaHQ6IDUwJTtcbn1cblxuLmRvdF9jaGFydCAuZG90X2NoYXJ0LWRvd24ge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiA1MCU7XG59XG5cbi5kb3RfY2hhcnQtZG93biAuZG90X2NoYXJ0LXJlc3AsIC5kb3RfY2hhcnQtZG93biAuZG90X2NoYXJ0LXRlbXAge1xuICAgIHdpZHRoOiA1MCU7XG59XG5cbi5kb3RfY2hhcnQtZG93biAuZG90X2NoYXJ0LXRlbXAge1xuICAgIGJvcmRlci1sZWZ0OiBzb2xpZCAuMXB4IHJnYmEoMjExLCAyMTEsIDIxMSwgMC40OTMpO1xufVxuXG4uZGlzcGxheSAuZm9vdGVyIHtcbiAgICBoZWlnaHQ6IDEyJTtcbiAgICBkaXNwbGF5OiBmbGV4O1xufVxuXG4uZm9vdGVyIC5kYXRhIHtcbiAgICBkaXNwbGF5OiAgZmxleDtcbiAgICB3aWR0aDogNjAlO1xuICAgIGdhcDogMTBweDtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG4uZGF0YSAuZGF0YS10ZW1wIHtcbiAgICBtYXJnaW4tbGVmdDogMTBweDtcbn1cblxuLmZvb3RlciAubW90aW9uX3N0YXR1cyB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICB3aWR0aDogNDAlO1xufVxuXG4ubW90aW9uX3N0YXR1cyAuc3RhdHVzIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIHdpZHRoOiAyNSU7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgYm9yZGVyLWxlZnQ6IHNvbGlkIC4xcHggcmdiYSgyMTEsIDIxMSwgMjExLCAwLjQ5Myk7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLm1vdGlvbl9zdGF0dXMgLmN1cl9zdGF0dXMge1xuICAgIGJhY2tncm91bmQtY29sb3I6IGRlZXBwaW5rO1xufVxuXG4udGl0bGUge1xuICAgIG9wYWNpdHk6IC41O1xuICAgIGZvbnQtc2l6ZTogLjdyZW07XG4gICAgcGFkZGluZy1sZWZ0OiAxMHB4O1xufVxuXG5pIHtcbiAgICBvcGFjaXR5OiAuNTtcbiAgICBmb250LXNpemU6IDEuM3JlbTtcbn1cblxuLmN1cl9zdGF0dXMgaXtcbiAgICBvcGFjaXR5OiAxO1xufSJdfQ== */</style></head>
+<body>
+  <app-root _nghost-wvh-c55="" ng-version="12.1.2"><router-outlet _ngcontent-wvh-c55=""></router-outlet><app-main _nghost-wvh-c54=""><div _ngcontent-wvh-c54="" class="top_header"><div _ngcontent-wvh-c54="" class="logo"><img _ngcontent-wvh-c54="" src="./Ojt2_files/hicardi.png"><div _ngcontent-wvh-c54="">LiveStudio</div></div><div _ngcontent-wvh-c54="" class="date">2021. 7. 21. 오후 6:10:53</div></div><div _ngcontent-wvh-c54="" class="content"><div _ngcontent-wvh-c54="" class="display_content"><div _ngcontent-wvh-c54="" class="display_content-left"><app-display _ngcontent-wvh-c54="" class="display" _nghost-wvh-c53="" id="display_0" ng-reflect-index="1" ng-reflect-device-infos="[object Object]"><div _ngcontent-wvh-c53="" class="display"><div _ngcontent-wvh-c53="" class="header"><div _ngcontent-wvh-c53="" class="group">AA-1</div><div _ngcontent-wvh-c53="" class="hicardi">HiCardi-06300</div><div _ngcontent-wvh-c53="" class="patient">이*은 (27) F</div></div><div _ngcontent-wvh-c53="" class="content"><div _ngcontent-wvh-c53="" class="line_chart"><div _ngcontent-wvh-c53="" class="line_chart-ecg"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">ECG</div><div _ngcontent-wvh-c53="">81</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="line_chart-resp"><div _ngcontent-wvh-c53="" class="title">Respiration</div><div _ngcontent-wvh-c53=""></div></div></div><div _ngcontent-wvh-c53="" class="dot_chart"><div _ngcontent-wvh-c53="" class="dot_chart-up dot_chart-heart"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Heart Rate</div><div _ngcontent-wvh-c53="">88bpm</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="dot_chart-down"><div _ngcontent-wvh-c53="" class="dot_chart-resp"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Respiration Rate</div><div _ngcontent-wvh-c53="">25bpm</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="dot_chart-temp"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Temperature</div><div _ngcontent-wvh-c53="">37.7℃</div></div><div _ngcontent-wvh-c53=""></div></div></div></div></div><div _ngcontent-wvh-c53="" class="footer"><div _ngcontent-wvh-c53="" class="data"><div _ngcontent-wvh-c53="" class="data-temp">Temp: <b _ngcontent-wvh-c53="">36.8℃</b></div><div _ngcontent-wvh-c53="" class="data-resp">Resp: <b _ngcontent-wvh-c53="">27bpm</b></div><div _ngcontent-wvh-c53="" class="data-heart">HR Min/Max: <b _ngcontent-wvh-c53="">71/90 bpm</b></div></div><div _ngcontent-wvh-c53="" class="motion_status"><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-bed"></i></div><div _ngcontent-wvh-c53="" class="status cur_status"><i _ngcontent-wvh-c53="" class="fas fa-male"></i></div><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-walking"></i></div><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-running"></i></div></div></div></div></app-display><app-display _ngcontent-wvh-c54="" class="display" _nghost-wvh-c53="" id="display_1" ng-reflect-index="2" ng-reflect-device-infos="[object Object]"><div _ngcontent-wvh-c53="" class="display"><div _ngcontent-wvh-c53="" class="header"><div _ngcontent-wvh-c53="" class="group">AA-2</div><div _ngcontent-wvh-c53="" class="hicardi">HiCardi-07004</div><div _ngcontent-wvh-c53="" class="patient">이*은 (27) F</div></div><div _ngcontent-wvh-c53="" class="content"><div _ngcontent-wvh-c53="" class="line_chart"><div _ngcontent-wvh-c53="" class="line_chart-ecg"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">ECG</div><div _ngcontent-wvh-c53="">81</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="line_chart-resp"><div _ngcontent-wvh-c53="" class="title">Respiration</div><div _ngcontent-wvh-c53=""></div></div></div><div _ngcontent-wvh-c53="" class="dot_chart"><div _ngcontent-wvh-c53="" class="dot_chart-up dot_chart-heart"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Heart Rate</div><div _ngcontent-wvh-c53="">88bpm</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="dot_chart-down"><div _ngcontent-wvh-c53="" class="dot_chart-resp"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Respiration Rate</div><div _ngcontent-wvh-c53="">25bpm</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="dot_chart-temp"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Temperature</div><div _ngcontent-wvh-c53="">37.7℃</div></div><div _ngcontent-wvh-c53=""></div></div></div></div></div><div _ngcontent-wvh-c53="" class="footer"><div _ngcontent-wvh-c53="" class="data"><div _ngcontent-wvh-c53="" class="data-temp">Temp: <b _ngcontent-wvh-c53="">36.8℃</b></div><div _ngcontent-wvh-c53="" class="data-resp">Resp: <b _ngcontent-wvh-c53="">27bpm</b></div><div _ngcontent-wvh-c53="" class="data-heart">HR Min/Max: <b _ngcontent-wvh-c53="">71/90 bpm</b></div></div><div _ngcontent-wvh-c53="" class="motion_status"><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-bed"></i></div><div _ngcontent-wvh-c53="" class="status cur_status"><i _ngcontent-wvh-c53="" class="fas fa-male"></i></div><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-walking"></i></div><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-running"></i></div></div></div></div></app-display><app-display _ngcontent-wvh-c54="" class="display" _nghost-wvh-c53="" id="display_2" ng-reflect-index="3" ng-reflect-device-infos="[object Object]"><div _ngcontent-wvh-c53="" class="display"><div _ngcontent-wvh-c53="" class="header"><div _ngcontent-wvh-c53="" class="group">AA-3</div><div _ngcontent-wvh-c53="" class="hicardi">HiCardi-07002</div><div _ngcontent-wvh-c53="" class="patient">이*은 (27) F</div></div><div _ngcontent-wvh-c53="" class="content"><div _ngcontent-wvh-c53="" class="line_chart"><div _ngcontent-wvh-c53="" class="line_chart-ecg"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">ECG</div><div _ngcontent-wvh-c53="">81</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="line_chart-resp"><div _ngcontent-wvh-c53="" class="title">Respiration</div><div _ngcontent-wvh-c53=""></div></div></div><div _ngcontent-wvh-c53="" class="dot_chart"><div _ngcontent-wvh-c53="" class="dot_chart-up dot_chart-heart"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Heart Rate</div><div _ngcontent-wvh-c53="">88bpm</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="dot_chart-down"><div _ngcontent-wvh-c53="" class="dot_chart-resp"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Respiration Rate</div><div _ngcontent-wvh-c53="">25bpm</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="dot_chart-temp"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Temperature</div><div _ngcontent-wvh-c53="">37.7℃</div></div><div _ngcontent-wvh-c53=""></div></div></div></div></div><div _ngcontent-wvh-c53="" class="footer"><div _ngcontent-wvh-c53="" class="data"><div _ngcontent-wvh-c53="" class="data-temp">Temp: <b _ngcontent-wvh-c53="">36.8℃</b></div><div _ngcontent-wvh-c53="" class="data-resp">Resp: <b _ngcontent-wvh-c53="">27bpm</b></div><div _ngcontent-wvh-c53="" class="data-heart">HR Min/Max: <b _ngcontent-wvh-c53="">71/90 bpm</b></div></div><div _ngcontent-wvh-c53="" class="motion_status"><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-bed"></i></div><div _ngcontent-wvh-c53="" class="status cur_status"><i _ngcontent-wvh-c53="" class="fas fa-male"></i></div><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-walking"></i></div><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-running"></i></div></div></div></div></app-display><app-display _ngcontent-wvh-c54="" class="display" _nghost-wvh-c53="" id="display_3" ng-reflect-index="4" ng-reflect-device-infos="[object Object]"><div _ngcontent-wvh-c53="" class="display"><div _ngcontent-wvh-c53="" class="header"><div _ngcontent-wvh-c53="" class="group">AA-4</div><div _ngcontent-wvh-c53="" class="hicardi">HiCardi-06299</div><div _ngcontent-wvh-c53="" class="patient">이*은 (27) F</div></div><div _ngcontent-wvh-c53="" class="content"><div _ngcontent-wvh-c53="" class="line_chart"><div _ngcontent-wvh-c53="" class="line_chart-ecg"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">ECG</div><div _ngcontent-wvh-c53="">81</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="line_chart-resp"><div _ngcontent-wvh-c53="" class="title">Respiration</div><div _ngcontent-wvh-c53=""></div></div></div><div _ngcontent-wvh-c53="" class="dot_chart"><div _ngcontent-wvh-c53="" class="dot_chart-up dot_chart-heart"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Heart Rate</div><div _ngcontent-wvh-c53="">88bpm</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="dot_chart-down"><div _ngcontent-wvh-c53="" class="dot_chart-resp"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Respiration Rate</div><div _ngcontent-wvh-c53="">25bpm</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="dot_chart-temp"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Temperature</div><div _ngcontent-wvh-c53="">37.7℃</div></div><div _ngcontent-wvh-c53=""></div></div></div></div></div><div _ngcontent-wvh-c53="" class="footer"><div _ngcontent-wvh-c53="" class="data"><div _ngcontent-wvh-c53="" class="data-temp">Temp: <b _ngcontent-wvh-c53="">36.8℃</b></div><div _ngcontent-wvh-c53="" class="data-resp">Resp: <b _ngcontent-wvh-c53="">27bpm</b></div><div _ngcontent-wvh-c53="" class="data-heart">HR Min/Max: <b _ngcontent-wvh-c53="">71/90 bpm</b></div></div><div _ngcontent-wvh-c53="" class="motion_status"><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-bed"></i></div><div _ngcontent-wvh-c53="" class="status cur_status"><i _ngcontent-wvh-c53="" class="fas fa-male"></i></div><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-walking"></i></div><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-running"></i></div></div></div></div></app-display><!--bindings={
+  "ng-reflect-ng-for-of": "0,1,2,3"
+}--></div><div _ngcontent-wvh-c54="" class="display_content-right"><app-display _ngcontent-wvh-c54="" class="display" _nghost-wvh-c53="" id="display_4" ng-reflect-index="5" ng-reflect-device-infos="[object Object]"><div _ngcontent-wvh-c53="" class="display"><div _ngcontent-wvh-c53="" class="header"><div _ngcontent-wvh-c53="" class="group">AA-5</div><div _ngcontent-wvh-c53="" class="hicardi">HiCardi-07051</div><div _ngcontent-wvh-c53="" class="patient">이*은 (27) F</div></div><div _ngcontent-wvh-c53="" class="content"><div _ngcontent-wvh-c53="" class="line_chart"><div _ngcontent-wvh-c53="" class="line_chart-ecg"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">ECG</div><div _ngcontent-wvh-c53="">81</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="line_chart-resp"><div _ngcontent-wvh-c53="" class="title">Respiration</div><div _ngcontent-wvh-c53=""></div></div></div><div _ngcontent-wvh-c53="" class="dot_chart"><div _ngcontent-wvh-c53="" class="dot_chart-up dot_chart-heart"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Heart Rate</div><div _ngcontent-wvh-c53="">88bpm</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="dot_chart-down"><div _ngcontent-wvh-c53="" class="dot_chart-resp"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Respiration Rate</div><div _ngcontent-wvh-c53="">25bpm</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="dot_chart-temp"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Temperature</div><div _ngcontent-wvh-c53="">37.7℃</div></div><div _ngcontent-wvh-c53=""></div></div></div></div></div><div _ngcontent-wvh-c53="" class="footer"><div _ngcontent-wvh-c53="" class="data"><div _ngcontent-wvh-c53="" class="data-temp">Temp: <b _ngcontent-wvh-c53="">36.8℃</b></div><div _ngcontent-wvh-c53="" class="data-resp">Resp: <b _ngcontent-wvh-c53="">27bpm</b></div><div _ngcontent-wvh-c53="" class="data-heart">HR Min/Max: <b _ngcontent-wvh-c53="">71/90 bpm</b></div></div><div _ngcontent-wvh-c53="" class="motion_status"><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-bed"></i></div><div _ngcontent-wvh-c53="" class="status cur_status"><i _ngcontent-wvh-c53="" class="fas fa-male"></i></div><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-walking"></i></div><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-running"></i></div></div></div></div></app-display><app-display _ngcontent-wvh-c54="" class="display" _nghost-wvh-c53="" id="display_5" ng-reflect-index="6" ng-reflect-device-infos="[object Object]"><div _ngcontent-wvh-c53="" class="display"><div _ngcontent-wvh-c53="" class="header"><div _ngcontent-wvh-c53="" class="group">AA-6</div><div _ngcontent-wvh-c53="" class="hicardi">HiCardi-07001</div><div _ngcontent-wvh-c53="" class="patient">이*은 (27) F</div></div><div _ngcontent-wvh-c53="" class="content"><div _ngcontent-wvh-c53="" class="line_chart"><div _ngcontent-wvh-c53="" class="line_chart-ecg"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">ECG</div><div _ngcontent-wvh-c53="">81</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="line_chart-resp"><div _ngcontent-wvh-c53="" class="title">Respiration</div><div _ngcontent-wvh-c53=""></div></div></div><div _ngcontent-wvh-c53="" class="dot_chart"><div _ngcontent-wvh-c53="" class="dot_chart-up dot_chart-heart"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Heart Rate</div><div _ngcontent-wvh-c53="">88bpm</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="dot_chart-down"><div _ngcontent-wvh-c53="" class="dot_chart-resp"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Respiration Rate</div><div _ngcontent-wvh-c53="">25bpm</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="dot_chart-temp"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Temperature</div><div _ngcontent-wvh-c53="">37.7℃</div></div><div _ngcontent-wvh-c53=""></div></div></div></div></div><div _ngcontent-wvh-c53="" class="footer"><div _ngcontent-wvh-c53="" class="data"><div _ngcontent-wvh-c53="" class="data-temp">Temp: <b _ngcontent-wvh-c53="">36.8℃</b></div><div _ngcontent-wvh-c53="" class="data-resp">Resp: <b _ngcontent-wvh-c53="">27bpm</b></div><div _ngcontent-wvh-c53="" class="data-heart">HR Min/Max: <b _ngcontent-wvh-c53="">71/90 bpm</b></div></div><div _ngcontent-wvh-c53="" class="motion_status"><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-bed"></i></div><div _ngcontent-wvh-c53="" class="status cur_status"><i _ngcontent-wvh-c53="" class="fas fa-male"></i></div><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-walking"></i></div><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-running"></i></div></div></div></div></app-display><app-display _ngcontent-wvh-c54="" class="display" _nghost-wvh-c53="" id="display_6" ng-reflect-index="7" ng-reflect-device-infos="[object Object]"><div _ngcontent-wvh-c53="" class="display"><div _ngcontent-wvh-c53="" class="header"><div _ngcontent-wvh-c53="" class="group">AA-7</div><div _ngcontent-wvh-c53="" class="hicardi">HiCardi-07003</div><div _ngcontent-wvh-c53="" class="patient">이*은 (27) F</div></div><div _ngcontent-wvh-c53="" class="content"><div _ngcontent-wvh-c53="" class="line_chart"><div _ngcontent-wvh-c53="" class="line_chart-ecg"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">ECG</div><div _ngcontent-wvh-c53="">81</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="line_chart-resp"><div _ngcontent-wvh-c53="" class="title">Respiration</div><div _ngcontent-wvh-c53=""></div></div></div><div _ngcontent-wvh-c53="" class="dot_chart"><div _ngcontent-wvh-c53="" class="dot_chart-up dot_chart-heart"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Heart Rate</div><div _ngcontent-wvh-c53="">88bpm</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="dot_chart-down"><div _ngcontent-wvh-c53="" class="dot_chart-resp"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Respiration Rate</div><div _ngcontent-wvh-c53="">25bpm</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="dot_chart-temp"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Temperature</div><div _ngcontent-wvh-c53="">37.7℃</div></div><div _ngcontent-wvh-c53=""></div></div></div></div></div><div _ngcontent-wvh-c53="" class="footer"><div _ngcontent-wvh-c53="" class="data"><div _ngcontent-wvh-c53="" class="data-temp">Temp: <b _ngcontent-wvh-c53="">36.8℃</b></div><div _ngcontent-wvh-c53="" class="data-resp">Resp: <b _ngcontent-wvh-c53="">27bpm</b></div><div _ngcontent-wvh-c53="" class="data-heart">HR Min/Max: <b _ngcontent-wvh-c53="">71/90 bpm</b></div></div><div _ngcontent-wvh-c53="" class="motion_status"><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-bed"></i></div><div _ngcontent-wvh-c53="" class="status cur_status"><i _ngcontent-wvh-c53="" class="fas fa-male"></i></div><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-walking"></i></div><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-running"></i></div></div></div></div></app-display><app-display _ngcontent-wvh-c54="" class="display" _nghost-wvh-c53="" id="display_7" ng-reflect-index="8" ng-reflect-device-infos="[object Object]"><div _ngcontent-wvh-c53="" class="display"><div _ngcontent-wvh-c53="" class="header"><div _ngcontent-wvh-c53="" class="group">AA-8</div><div _ngcontent-wvh-c53="" class="hicardi">HiCardi-06298</div><div _ngcontent-wvh-c53="" class="patient">이*은 (27) F</div></div><div _ngcontent-wvh-c53="" class="content"><div _ngcontent-wvh-c53="" class="line_chart"><div _ngcontent-wvh-c53="" class="line_chart-ecg"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">ECG</div><div _ngcontent-wvh-c53="">81</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="line_chart-resp"><div _ngcontent-wvh-c53="" class="title">Respiration</div><div _ngcontent-wvh-c53=""></div></div></div><div _ngcontent-wvh-c53="" class="dot_chart"><div _ngcontent-wvh-c53="" class="dot_chart-up dot_chart-heart"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Heart Rate</div><div _ngcontent-wvh-c53="">88bpm</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="dot_chart-down"><div _ngcontent-wvh-c53="" class="dot_chart-resp"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Respiration Rate</div><div _ngcontent-wvh-c53="">25bpm</div></div><div _ngcontent-wvh-c53=""></div></div><div _ngcontent-wvh-c53="" class="dot_chart-temp"><div _ngcontent-wvh-c53=""><div _ngcontent-wvh-c53="" class="title">Temperature</div><div _ngcontent-wvh-c53="">37.7℃</div></div><div _ngcontent-wvh-c53=""></div></div></div></div></div><div _ngcontent-wvh-c53="" class="footer"><div _ngcontent-wvh-c53="" class="data"><div _ngcontent-wvh-c53="" class="data-temp">Temp: <b _ngcontent-wvh-c53="">36.8℃</b></div><div _ngcontent-wvh-c53="" class="data-resp">Resp: <b _ngcontent-wvh-c53="">27bpm</b></div><div _ngcontent-wvh-c53="" class="data-heart">HR Min/Max: <b _ngcontent-wvh-c53="">71/90 bpm</b></div></div><div _ngcontent-wvh-c53="" class="motion_status"><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-bed"></i></div><div _ngcontent-wvh-c53="" class="status cur_status"><i _ngcontent-wvh-c53="" class="fas fa-male"></i></div><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-walking"></i></div><div _ngcontent-wvh-c53="" class="status"><i _ngcontent-wvh-c53="" class="fas fa-running"></i></div></div></div></div></app-display><!--bindings={
+  "ng-reflect-ng-for-of": "4,5,6,7"
+}--></div></div><div _ngcontent-wvh-c54="" class="other_content"><app-map _ngcontent-wvh-c54="" class="map" _nghost-wvh-c51=""></app-map><app-detect _ngcontent-wvh-c54="" class="detect" _nghost-wvh-c52=""><p _ngcontent-wvh-c52="">detect works!</p></app-detect></div></div></app-main><!--container--></app-root>
+<script src="./Ojt2_files/runtime.js" defer=""></script><script src="./Ojt2_files/polyfills.js" defer=""></script><script src="./Ojt2_files/vendor.js" defer=""></script><script src="./Ojt2_files/main.js" defer=""></script>
+
+</body></html>

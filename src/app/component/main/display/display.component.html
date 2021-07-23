@@ -1,0 +1,66 @@
+<div class="display">
+  <div class="header">
+      <div class="group">AA-{{index}}</div>
+      <div class="hicardi">{{deviceInfos?.hicardiName}}</div>
+      <div class="patient">이*은 (27) F</div>
+  </div>  
+  <div class="content">
+    <div class="line_chart">
+        <div class="line_chart-ecg" id="ecg_{{index}}" >
+            <div>
+                <div class="title">ECG</div>
+                <div>81</div>
+            </div>
+            <div class="chart"></div>
+        </div>
+        <div class="line_chart-resp" id="res_{{index}}">
+            <div class="title">Respiration</div>
+            <div class="chart"></div>
+        </div>
+    </div>
+    <div class="dot_chart">
+        <div class="dot_chart-up dot_chart-heart">
+            <div>
+                <div class="title">Heart Rate</div>
+                <div>88bpm</div>
+            </div>
+            <div></div>
+        </div>
+        <div class="dot_chart-down">
+            <div class="dot_chart-resp">
+                <div>
+                    <div class="title">Respiration Rate</div>
+                    <div>25bpm</div>
+                </div>
+                <div></div>
+            </div>
+            <div class="dot_chart-temp">
+                <div>
+                    <div class="title">Temperature</div>
+                    <div>37.7℃</div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="footer">
+      <div class="data">
+          <div class="data-temp">Temp: <b>36.8℃</b></div>
+          <div class="data-resp">Resp: <b>27bpm</b></div>
+          <div class="data-heart">HR Min/Max: <b>71/90 bpm</b></div>
+      </div>
+      <div class="motion_status">
+          <div class="status">
+            <i class="fas fa-bed"></i>
+          </div>
+          <div class="status cur_status">
+            <i class="fas fa-male"></i>
+          </div>
+          <div class="status">
+            <i class="fas fa-walking"></i>
+          </div>
+          <div class="status"><i class="fas fa-running"></i></div>
+      </div>
+  </div>
+</div>
