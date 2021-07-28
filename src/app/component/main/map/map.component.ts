@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { TimeoutError } from 'rxjs';
 
 @Component({
   selector: 'app-map',
@@ -7,13 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
 
-  title = 'My First AGM project';
-  lat = 51.678418;
-  lng = 7.809007;
+  }
+
+  zoom = 12;
+  
+  @Input() width: number = 0;
+  @Input() height: number = 0;
 
   ngOnInit(): void {
+    //위치 정보를 가져와서 lat/lng를 적용해준다.
   }
 
 

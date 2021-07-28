@@ -17,6 +17,8 @@ export class MainComponent implements OnInit {
   groupIndex: number = 0;
   spaceIds: string[] = [];
   deviceInfos: any = {};
+  mapWidth: number = 0;
+  mapHeight: number = 0;
 
   constructor(private wsService: WebsocketService, private dataService: DataService) {
     this.dataService.getDeviceIds("AA").then(deviceItems => {
@@ -48,11 +50,11 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.mapWidth = document.getElementById("map")!.getBoundingClientRect().width;
+    this.mapHeight = document.getElementById("map")!.getBoundingClientRect().height;
   }
 
   ngOnDestroy() {
     this.closeSocket();
   }
-
 }

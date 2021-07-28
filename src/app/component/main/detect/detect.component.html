@@ -1,1 +1,20 @@
-<p>detect works!</p>
+<div class="table-content">
+    <table>
+        <thead>
+            <tr>
+                <th>Space</th>
+                <th>#</th>
+                <th>Arrhythmia Detected</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let detect of temp">
+                <td style="text-align: center;">AA-{{detect.space}}</td>
+                <td>1</td>
+                <td>{{detect.annotation}}</td>
+                <td style="text-align: center;">{{detect.time}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

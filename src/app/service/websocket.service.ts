@@ -9,7 +9,7 @@ export class WebsocketService {
   ws!: WebSocket;
   socketIsOpen = 1;
   subject: Subject<any> = new Subject();
-  mainSubject: Subject<any> = new Subject();
+  annotationSubject: Subject<any> = new Subject();
 
   constructor() { }
 
