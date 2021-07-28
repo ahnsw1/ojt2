@@ -121,13 +121,19 @@ export class DisplayComponent implements OnInit {
         document.querySelector(`#hr_${this.index} .value`)!.innerHTML = `${observer.dp.hr.current}bpm`;
         document.querySelector(`.footer_${this.index} .data-heart-min-value`)!.innerHTML = observer.dp.hr.min;
         document.querySelector(`.footer_${this.index} .data-heart-max-value`)!.innerHTML = observer.dp.hr.max;
-
+        
+        //resperation rate
         if (observer.dp["93"]) {
           document.querySelector(`.footer_${this.index} .data-resp-value`)!.innerHTML = observer.dp["93"];
+          document.querySelector(`#resp_${this.index} .value`)!.innerHTML = observer.dp["93"] + "bpm";
         }
+        
+        //temperate
         else if (observer.dp["AB"]) {
           document.querySelector(`.footer_${this.index} .data-temp-value`)!.innerHTML = (observer.dp["AB"] / 10).toString();
+          document.querySelector(`#temp_${this.index} .value`)!.innerHTML = (observer.dp["AB"] / 10).toString() + "℃";
         }
+        
         //ecg옆의 큰 숫자 표시하기
         else if (observer.dp["92"]) {
           document.querySelector(`#ecg_${this.index} .value`)!.innerHTML = observer.dp["92"];
@@ -156,31 +162,19 @@ export class DisplayComponent implements OnInit {
           document.querySelector(`#motion_${this.index} .status_${status}`)?.classList.add("cur_status");
         }
 
-        // else if (observer.dp["96"]) {
+        //arrhythmia detected
         if (observer.arrhythmiaList) {
           this.wsService.annotationSubject.next(
             { [this.index]: observer.arrhythmiaList }
           )
         }
 
-        /**
-         * trendData: {
-         *   hr: [{index, min, max, avg, sum}],
-         *   resp: [{index, min, max, avg, sum}],
-         *   temp: [{index, min, max, avg, sum}]
-         * }
-        */
+        //trend data
         if (observer.trendData) {
-
-          console.log(observer, new Date());
           this.drawRateChart(observer.trendData.hr, this.index, "hr")
           this.drawRateChart(observer.trendData.temp, this.index, "temp")
           this.drawRateChart(observer.trendData.resp, this.index, "resp")
         }
-
-        // if (observer.arrhythmiaList) {
-        //   console.log(observer);
-        // }
 
         this.drawResChart(this.resData, this.index);
         this.drawEcgChart(this.ecgData, this.index);
@@ -276,8 +270,6 @@ export class DisplayComponent implements OnInit {
   }
 
   drawRateChart(data: any, index: number, id: string) {
-    // const hrDiv = document.getElementById(`hr_${index}`)!;
-
     const hrDiv = document!.querySelector(`#${id}_${index}`);
 
     const hrWidth = hrDiv!.getBoundingClientRect().width;

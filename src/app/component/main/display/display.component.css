@@ -72,11 +72,19 @@
 }
 
 .dot_chart-down .dot_chart-resp, .dot_chart-down .dot_chart-temp {
-    width: 50%;
+    width: 100%;
 }
 
 .dot_chart-down .dot_chart-temp {
     border-left: solid .1px rgba(211, 211, 211, 0.493);
+}
+
+.dot_chart-resp .value {
+    margin-left: 10px;
+}
+
+.dot_chart-temp .value { 
+    margin-left: 34px;
 }
 
 .display .footer {
