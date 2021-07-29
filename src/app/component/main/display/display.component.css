@@ -22,7 +22,7 @@
 .content .line_chart {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 55%;
 }
 
 .line_chart .line_chart-ecg {
@@ -37,7 +37,7 @@
 }
 
 .line_chart-ecg .chart-header .value {
-    margin-left: 385px;
+    margin-left: 345px;
     font-size: 1.7rem;
 }
 
@@ -48,7 +48,7 @@
 .content .dot_chart {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 45%;
 }
 
 .dot_chart .dot_chart-hr, .dot_chart .dot_chart-resp {
@@ -56,7 +56,7 @@
 }
 
 .dot_chart-hr .value {
-    margin-left: 185px;
+    margin-left: 220px;
 }
 
 .dot_chart .dot_chart-up {
@@ -80,11 +80,11 @@
 }
 
 .dot_chart-resp .value {
-    margin-left: 10px;
+    margin-left: 30px;
 }
 
 .dot_chart-temp .value { 
-    margin-left: 34px;
+    margin-left: 53px;
 }
 
 .display .footer {

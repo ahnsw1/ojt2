@@ -92,7 +92,7 @@ export class DetectComponent implements OnInit {
             break;
         }
         diff["space"] = Object.keys(item)[0];
-        
+
         let ts = new Date(diff["timeStamp"]);
         diff["time"] = `
           ${ts.getHours() < 10 ? "0" + ts.getHours() : ts.getHours()}:${ts.getMinutes() < 10 ? "0" + ts.getMinutes() : ts.getMinutes()}:${ts.getSeconds() < 10 ? "0" + ts.getSeconds() : ts.getSeconds()}
@@ -100,10 +100,15 @@ export class DetectComponent implements OnInit {
       }
 
       this.temp.push(...difference);
-      // this.temp.unshift(...difference);
+      if (this.temp.length > 1600) {
+        for (let i = 0; i < difference.length; i++) {
+          this.temp.shift();
+        }
+      }
+
       this.temp.sort((a: any, b: any) => {
         return new Date(b.timeStamp).getTime() - new Date(a.timeStamp).getTime();
-      }) 
+      })
     })
   }
 

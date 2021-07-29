@@ -121,19 +121,19 @@ export class DisplayComponent implements OnInit {
         document.querySelector(`#hr_${this.index} .value`)!.innerHTML = `${observer.dp.hr.current}bpm`;
         document.querySelector(`.footer_${this.index} .data-heart-min-value`)!.innerHTML = observer.dp.hr.min;
         document.querySelector(`.footer_${this.index} .data-heart-max-value`)!.innerHTML = observer.dp.hr.max;
-        
+
         //resperation rate
         if (observer.dp["93"]) {
           document.querySelector(`.footer_${this.index} .data-resp-value`)!.innerHTML = observer.dp["93"];
           document.querySelector(`#resp_${this.index} .value`)!.innerHTML = observer.dp["93"] + "bpm";
         }
-        
+
         //temperate
         else if (observer.dp["AB"]) {
           document.querySelector(`.footer_${this.index} .data-temp-value`)!.innerHTML = (observer.dp["AB"] / 10).toString();
           document.querySelector(`#temp_${this.index} .value`)!.innerHTML = (observer.dp["AB"] / 10).toString() + "℃";
         }
-        
+
         //ecg옆의 큰 숫자 표시하기
         else if (observer.dp["92"]) {
           document.querySelector(`#ecg_${this.index} .value`)!.innerHTML = observer.dp["92"];
@@ -270,6 +270,13 @@ export class DisplayComponent implements OnInit {
   }
 
   drawRateChart(data: any, index: number, id: string) {
+    if (id === "temp" ) {
+      for (let i = 0; i < data.length; i++) {
+        data[i].min /= 10;
+        data[i].avg /= 10;
+        data[i].max /= 10;
+      }
+    }
     const hrDiv = document!.querySelector(`#${id}_${index}`);
 
     const hrWidth = hrDiv!.getBoundingClientRect().width;
@@ -283,10 +290,10 @@ export class DisplayComponent implements OnInit {
       .append("svg")
       .attr("class", "prd")
       .attr("viewBox", `0 0 ${hrWidth} ${hrHeight}`)
-      .attr("width", hrWidth).attr("height", hrHeight);
+      .attr("width", hrWidth - margin.right / 2).attr("height", hrHeight);
 
     const hrG: any = hrSvg.append("g").attr("width", hrWidth - margin.right).attr("height", hrHeight - margin.bottom);
-
+    
     const xHRScale: any = d3.scaleLinear().range([0, hrWidth - margin.left - margin.right]).nice();
     const yHRScale: any = d3.scaleLinear().range([hrHeight - margin.bottom - margin.top, margin.top + margin.bottom]).nice();
 
@@ -318,7 +325,7 @@ export class DisplayComponent implements OnInit {
     let max: any;
     min = d3.min(data, (d: any) => d.min);
     max = d3.max(data, (d: any) => d.max);
-
+    
     chart.append("g")
       .attr("class", "axis axis--y")
       .attr("height", hrHeight - margin.bottom - margin.top)
