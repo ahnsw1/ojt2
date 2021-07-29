@@ -6,23 +6,16 @@
     </div>
     <div class="content">
         <div class="line_chart">
-            <div class="line_chart-ecg" id="ecg_{{index}}">
-                <div class="chart-header">
-                    <div class="title">ECG</div>
-                    <div class="value"></div>
-                </div>
-                <div class="chart"></div>
-            </div>
-            <div class="line_chart-resp" id="res_{{index}}">
-                <div class="chart-header">
-                    <div class="title">Respiration</div>
-                    <div class="value"></div>
-                </div>
-                <div class="chart"></div>
-            </div>
+            <app-wave-form class="line_chart-ecg" [title]="'ecg'" [index]="index" [deviceInfos]="deviceInfos"></app-wave-form>
+            <app-wave-form class="line_chart-resp" [title]="'res'" [index]="index" [deviceInfos]="deviceInfos"></app-wave-form>
         </div>
         <div class="dot_chart">
-            <div class="dot_chart-up dot_chart-hr" id="hr_{{index}}">
+            <app-static-form class="dot_chart-up dot_chart-hr" [title]="'hr'" [index]="index"></app-static-form>
+            <div class="dot_chart-down">
+                <app-static-form class="dot_chart-resp" [title]="'resp'" [index]="index" [deviceInfos]="deviceInfos"></app-static-form>
+                <app-static-form class="dot_chart-temp" [title]="'temp'" [index]="index" [deviceInfos]="deviceInfos"></app-static-form>
+            </div>
+            <!-- <div class="dot_chart-up dot_chart-hr" id="hr_{{index}}">
                 <div class="chart-header">
                     <div class="title">Heart Rate</div>
                     <div class="value"></div>
@@ -46,7 +39,7 @@
                     </div>
                     <div class="chart"></div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="footer footer_{{index}}">

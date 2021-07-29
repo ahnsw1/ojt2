@@ -8,13 +8,11 @@ import { MainComponent } from './component/main/main.component';
 import { DisplayComponent } from './component/main/display/display.component';
 import { MapComponent } from './component/main/map/map.component';
 import { DetectComponent } from './component/main/detect/detect.component';
-import { EcgComponent } from './component/main/display/ecg/ecg.component';
-import { RespComponent } from './component/main/display/resp/resp.component';
-import { StateComponent } from './component/main/display/state/state.component';
-import { TrendComponent } from './component/main/display/trend/trend.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './service/auth/auth.service';
+import { WaveFormComponent } from './component/main/display/wave-form/wave-form.component';
+import { StaticFormComponent } from './component/main/display/static-form/static-form.component';
 
 @NgModule({
   declarations: [
@@ -24,10 +22,8 @@ import { AuthService } from './service/auth/auth.service';
     DisplayComponent,
     MapComponent,
     DetectComponent,
-    EcgComponent,
-    RespComponent,
-    StateComponent,
-    TrendComponent
+    WaveFormComponent,
+    StaticFormComponent
   ],
   imports: [
     BrowserModule,
