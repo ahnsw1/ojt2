@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
+import { tickFormat } from 'd3';
+import { first } from 'rxjs/operators';
 import { WebsocketService } from '../../../../service/websocket.service';
 
 @Component({
@@ -60,12 +62,13 @@ export class StaticFormComponent implements OnInit {
       } else {
         firstIndex = data[0].index;
       }
-      lastIndex = firstIndex + 12 * 4;
+        lastIndex = firstIndex + 12 * 4;
     } else {
       firstIndex = data[data.length - 12 * 4].index;
       lastIndex = data[data.length - 1].index;
     }
     xHRScale.domain([Math.floor(firstIndex / 4), Math.ceil(lastIndex / 4)]);
+    
     yHRScale.domain([d3.min(data, (d: any) => d.min), d3.max(data, (d: any) => d.max)]);
 
     const chart = hrG.append("g")
@@ -79,7 +82,7 @@ export class StaticFormComponent implements OnInit {
       .attr("width", hrWidth - margin.left - margin.right)
       .attr("stroke", "gray")
       .attr('transform', `translate(${margin.left - 1.5}, ${hrHeight - margin.bottom})`)
-      .call(d3.axisBottom(xHRScale).tickSizeInner(0))
+      .call(d3.axisBottom(xHRScale).tickSizeInner(0).tickFormat((d: any) => d = d > 24 ? d - 24 : d))
       .select(".domain").remove();
 
     let min: any;

@@ -162,7 +162,7 @@ export class WaveFormComponent implements OnInit {
       .datum(data)
       .attr("class", "line")
       .attr("fill", "none")
-      .attr("stroke", this.title === "ecg" ? "blue" : "white")
+      .attr("stroke", this.title === "ecg" ? "green" : "white")
       .attr("width", width)
       .attr("stroke-width", "2px")
       .attr("d", line);
