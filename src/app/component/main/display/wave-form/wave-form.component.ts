@@ -130,7 +130,7 @@ export class WaveFormComponent implements OnInit {
 
     const width = div.getBoundingClientRect().width;
     const height = div.getBoundingClientRect().height;
-    const margin = { top: 10, bottom: 10 };
+    const margin = { top: 20, bottom: 20 };
 
     d3.select(`#${this.title}_${index} svg`).remove();
 
