@@ -54,7 +54,7 @@ export class StaticFormComponent implements OnInit {
     const xHRScale: any = d3.scaleLinear().range([0, hrWidth - margin.left - margin.right]).nice();
     const yHRScale: any = d3.scaleLinear().range([hrHeight - margin.bottom - margin.top, margin.top + margin.bottom]).nice();
 
-    if (data[data.length - 1].index < 13) {
+    if (data[data.length - 1].index < 13 * 4) {
       xHRScale.domain([0, 12]);
       data = data.filter((i: any) => i.index < 48)
     } else {
@@ -88,7 +88,7 @@ export class StaticFormComponent implements OnInit {
       .attr("stroke", "gray")
       .attr("transform", `translate(${margin.left}, ${margin.top})`)
       .call(d3.axisLeft(yHRScale).tickSizeInner(0).tickValues([min, max]).tickFormat(x => `${x}`))
-      .select(".domain").remove();
+      .select(".domain").remove()
 
     if (min !== max) {
       chart
