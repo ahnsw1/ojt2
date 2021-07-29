@@ -6,40 +6,19 @@
     </div>
     <div class="content">
         <div class="line_chart">
-            <app-wave-form class="line_chart-ecg" [title]="'ecg'" [index]="index" [deviceInfos]="deviceInfos"></app-wave-form>
-            <app-wave-form class="line_chart-resp" [title]="'res'" [index]="index" [deviceInfos]="deviceInfos"></app-wave-form>
+            <app-wave-form class="line_chart-ecg" [title]="'ecg'" [index]="index" [deviceInfos]="deviceInfos">
+            </app-wave-form>
+            <app-wave-form class="line_chart-resp" [title]="'res'" [index]="index" [deviceInfos]="deviceInfos">
+            </app-wave-form>
         </div>
         <div class="dot_chart">
-            <app-static-form class="dot_chart-up dot_chart-hr" [title]="'hr'" [index]="index"></app-static-form>
+            <app-static-form class="dot_chart-up dot_chart-hr" [title]="'hr'" [index]="index" [deviceInfos]="deviceInfos"></app-static-form>
             <div class="dot_chart-down">
-                <app-static-form class="dot_chart-resp" [title]="'resp'" [index]="index" [deviceInfos]="deviceInfos"></app-static-form>
-                <app-static-form class="dot_chart-temp" [title]="'temp'" [index]="index" [deviceInfos]="deviceInfos"></app-static-form>
+                <app-static-form class="dot_chart-resp" [title]="'resp'" [index]="index" [deviceInfos]="deviceInfos">
+                </app-static-form>
+                <app-static-form class="dot_chart-temp" [title]="'temp'" [index]="index" [deviceInfos]="deviceInfos">
+                </app-static-form>
             </div>
-            <!-- <div class="dot_chart-up dot_chart-hr" id="hr_{{index}}">
-                <div class="chart-header">
-                    <div class="title">Heart Rate</div>
-                    <div class="value"></div>
-                </div>
-                <div class="chart">
-
-                </div>
-            </div>
-            <div class="dot_chart-down">
-                <div class="dot_chart-resp" id="resp_{{index}}">
-                    <div class="chart-header">
-                        <div class="title">Respiration Rate</div>
-                        <div class="value"></div>
-                    </div>
-                    <div class="chart"></div>
-                </div>
-                <div class="dot_chart-temp" id="temp_{{index}}">
-                    <div class="chart-header">
-                        <div class="title">Temperature</div>
-                        <div class="value"></div>
-                    </div>
-                    <div class="chart"></div>
-                </div>
-            </div> -->
         </div>
     </div>
     <div class="footer footer_{{index}}">
@@ -50,18 +29,8 @@
                     class="data-heart-max-value"></b>bpm</div>
         </div>
         <div class="motion_status" id="motion_{{index}}">
-            <div class="status status_0">
-                <i class="fas fa-bed"></i>
-            </div>
-            <div class="status status_1">
-                <i class="fas fa-male"></i>
-            </div>
-            <div class="status status_2">
-                <i class="fas fa-walking"></i>
-            </div>
-            <div class="status status_3">
-                <i class="fas fa-running"></i>
-            </div>
+            <app-motion *ngFor="let currentIndex of [0,1,2,3]" class="status" [currentIndex]="currentIndex" [currentMotion]="currentIndex === motionStatus"
+                [ngClass]="currentIndex === motionStatus ? 'cur_status': ''"></app-motion>
         </div>
     </div>
 </div>

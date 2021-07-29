@@ -30,24 +30,17 @@
 
 .content .display_content {
     width: 80%;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 5px;
+    gap: 5px;
     height: 100%;
-}
 
-.display_content .display_content-left, .display_content .display_content-right {
-    width: 50%;
-    margin-right: 5px;
-}
-
-.display_content-left, .display_content-right {
-    display: flex;
-    flex-direction: column;
 }
 
 .display {
-    height: 25%;
+    height: 99%;
     border: solid .1px rgba(211, 211, 211, 0.493);
-    margin-top: 5px;
     background-color: black;
 }
 

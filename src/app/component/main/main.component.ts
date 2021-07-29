@@ -20,7 +20,7 @@ export class MainComponent implements OnInit {
   mapWidth: number = 0;
   mapHeight: number = 0;
 
-  constructor(private wsService: WebsocketService, private dataService: DataService) {
+  constructor(private wsService: WebsocketService, private dataService: DataService) {//TODO: css grid로 바꾸기
     this.dataService.getDeviceIds("AA").then(deviceItems => {
       //소켓통신시작
       this.wsSubscription = this.wsService.createObservableSocket(deviceItems)

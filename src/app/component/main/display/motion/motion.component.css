@@ -1,0 +1,8 @@
+i {
+    opacity: .5;
+    font-size: 1.3rem;
+}
+
+.cur_status  i{
+    opacity: 1;
+}

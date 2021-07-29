@@ -9,14 +9,13 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./display.component.css']
 })
 export class DisplayComponent implements OnInit {
-  motionStatus: number = 0;
-
   constructor(private wsService: WebsocketService) { }
 
   @Input() index: number = 0;
   @Input() deviceInfos: any = {};
   ecg: string = "ecg";
   resp: string = "res";
+  motionStatus: number = 4;
 
   ngOnInit(): void {
     this.wsService.subject.subscribe(observer => {
@@ -46,7 +45,7 @@ export class DisplayComponent implements OnInit {
 
         //motion
         else if (observer.dp["B8"] !== undefined) {
-          let status = 0;
+          let status = 4;
           switch (observer.dp["B8"]) {
             case 0:
               status = 0
@@ -61,11 +60,10 @@ export class DisplayComponent implements OnInit {
               status = 3;
               break;
             default:
-              status = 0;
+              status = 4;
               break;
           }
-          document.querySelector(`#motion_${this.index} .cur_status`)?.classList.remove("cur_status");
-          document.querySelector(`#motion_${this.index} .status_${status}`)?.classList.add("cur_status");
+          this.motionStatus = status;
         }
 
         //arrhythmia detected

@@ -7,12 +7,7 @@
 </div>
 <div class="content">
     <div class="display_content">
-        <div class="display_content-left">
-            <app-display *ngFor="let index of [0,1,2,3]" class="display" id="display_{{index}}" [index]="index + 1" [deviceInfos]="deviceInfos[index + 1]"></app-display>
-        </div>
-        <div class="display_content-right">
-            <app-display *ngFor="let index of [4,5,6,7]" class="display" id="display_{{index}}" [index]="index + 1" [deviceInfos]="deviceInfos[index + 1]"></app-display>
-        </div>
+        <app-display *ngFor="let index of [0,1,2,3,4,5,6,7]" class="display" id="display_{{index}}" [index]="index + 1" [deviceInfos]="deviceInfos[index + 1]"></app-display>
     </div>
     <div class="other_content">
         <app-map class="map" id="map" [width]="mapWidth" [height]="mapHeight"></app-map>

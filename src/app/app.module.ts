@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './service/auth/auth.service';
 import { WaveFormComponent } from './component/main/display/wave-form/wave-form.component';
 import { StaticFormComponent } from './component/main/display/static-form/static-form.component';
+import { MotionComponent } from './component/main/display/motion/motion.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { StaticFormComponent } from './component/main/display/static-form/static
     MapComponent,
     DetectComponent,
     WaveFormComponent,
-    StaticFormComponent
+    StaticFormComponent,
+    MotionComponent
   ],
   imports: [
     BrowserModule,

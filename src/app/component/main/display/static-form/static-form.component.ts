@@ -19,9 +19,7 @@ export class StaticFormComponent implements OnInit {
     this.wsService.subject.subscribe(observer => {
       if (observer.dv === this.deviceInfos.deviceAddress) {
         if (observer.trendData) {
-          this.drawRateChart(observer.trendData.hr, this.index, "hr")
-          this.drawRateChart(observer.trendData.temp, this.index, "temp")
-          this.drawRateChart(observer.trendData.resp, this.index, "resp")
+          this.drawRateChart(observer.trendData[`${this.title}`], this.index, this.title)
         }
       }
     })
@@ -54,13 +52,20 @@ export class StaticFormComponent implements OnInit {
     const xHRScale: any = d3.scaleLinear().range([0, hrWidth - margin.left - margin.right]).nice();
     const yHRScale: any = d3.scaleLinear().range([hrHeight - margin.bottom - margin.top, margin.top + margin.bottom]).nice();
 
-    if (data[data.length - 1].index < 13 * 4) {
-      xHRScale.domain([0, 12]);
-      data = data.filter((i: any) => i.index < 48)
+    let firstIndex;
+    let lastIndex;
+    if (data.length <= 12 * 4) {
+      if (firstIndex === 0) {
+        firstIndex = 96;
+      } else {
+        firstIndex = data[0].index;
+      }
+      lastIndex = firstIndex + 12 * 4;
     } else {
-      xHRScale.domain([12, 24]);
-      data = data.filter((i: any) => i.index >= 48)
+      firstIndex = data[data.length - 12 * 4].index;
+      lastIndex = data[data.length - 1].index;
     }
+    xHRScale.domain([Math.floor(firstIndex / 4), Math.ceil(lastIndex / 4)]);
     yHRScale.domain([d3.min(data, (d: any) => d.min), d3.max(data, (d: any) => d.max)]);
 
     const chart = hrG.append("g")
@@ -105,7 +110,7 @@ export class StaticFormComponent implements OnInit {
             return yHRScale(d.max);
           }
         })
-        .attr("transform", `translate(${margin.right + 5}, ${margin.bottom})`)
+        .attr("transform", `translate(${margin.right + 2}, ${margin.bottom})`)
         .attr("width", "1px")
         .attr("fill", "gray")
         .attr("height", (d: any) => hrHeight - yHRScale(d.max) - margin.top - margin.bottom)
@@ -117,7 +122,7 @@ export class StaticFormComponent implements OnInit {
       .enter()
       .append("circle")
       .attr("class", "circle")
-      .attr("transform", `translate(${margin.right + 6.2}, ${margin.bottom})`)
+      .attr("transform", `translate(${margin.right + 2.6}, ${margin.bottom})`)
       .attr("cx", (d: any) => xHRScale((d.index + 1) / 4))
       .attr("cy", (d: any) => yHRScale(d.avg))
       .attr("r", 1.5)
