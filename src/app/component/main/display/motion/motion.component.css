@@ -6,3 +6,8 @@ i {
 .cur_status  i{
     opacity: 1;
 }
+
+div{
+    display: flex;
+    align-items: center;
+}
