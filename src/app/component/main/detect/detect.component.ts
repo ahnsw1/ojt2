@@ -35,60 +35,79 @@ export class DetectComponent implements OnInit {
         switch (diff.type) {
           case 0:
             diff["annotation"] = "normal"
+            diff["color"] = "green"
             break;
           case 1:
             diff["annotation"] = "asystole"
+            diff["color"] = "skyblue"
             break;
           case 2:
             diff["annotation"] = "ventricular fibrillation"
+            diff["color"] = "red"
             break;
           case 3:
             diff["annotation"] = "premature ventricular contraction"
+            diff["color"] = "red"
             break;
           case 4:
             diff["annotation"] = "ventricular tachycardia"
+            diff["color"] = "red"
             break;
           case 5:
             diff["annotation"] = "ventricular bigeminy"
+            diff["color"] = "red"
             break;
           case 6:
             diff["annotation"] = "ventricular trigemini"
+            diff["color"] = "red"
             break;
           case 7:
             diff["annotation"] = "ventricular couplet"
+            diff["color"] = "red"
             break;
           case 8:
             diff["annotation"] = "sinus tachycardia"
+            diff["color"] = "green"
             break;
           case 9:
             diff["annotation"] = "atrial tachycardia"
+            diff["color"] = "green"
             break;
           case 10:
             diff["annotation"] = "supraventricular tachycardia"
+            diff["color"] = "green"
             break;
           case 11:
             diff["annotation"] = "paced rhythm"
+            diff["color"] = "purple"
             break;
           case 12:
             diff["annotation"] = "atrial fibrillation"
+            diff["color"] = "yellow"
             break;
           case 13:
             diff["annotation"] = "atrial flutter"
+            diff["color"] = "yellow"
             break;
           case 14:
             diff["annotation"] = "atrial premature contraction"
+            diff["color"] = "red"
             break;
           case 15:
             diff["annotation"] = "ventricular Triplet"
+            diff["color"] = "red"
             break;
           case 16:
             diff["annotation"] = "sinus tachycardia"
+            diff["color"] = "green"
             break;
           case 99:
             diff["annotation"] = "in progress/overange"
+            diff["color"] = "gray"
             break;
           default:
             diff["annotation"] = "Unknown"
+            diff["color"] = "gray"
             break;
         }
         diff["space"] = Object.keys(item)[0];

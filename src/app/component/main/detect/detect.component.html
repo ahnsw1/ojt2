@@ -12,7 +12,7 @@
             <tr *ngFor="let detect of temp">
                 <td style="text-align: center;">AA-{{detect.space}}</td>
                 <td>1</td>
-                <td>{{detect.annotation}}</td>
+                <td [ngStyle]="{'color': detect.color}">{{detect.annotation}}</td>
                 <td style="text-align: center;">{{detect.time}}</td>
             </tr>
         </tbody>

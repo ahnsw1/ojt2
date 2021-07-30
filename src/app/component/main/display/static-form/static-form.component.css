@@ -2,24 +2,16 @@
     position: absolute;
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
 .dot_chart-hr, .dot_chart-resp, .dot_chart-temp{
     height: 100%;
 }
 
-.dot_chart-hr .value {
-    margin-left: 220px;
+.dot_chart-container {
+    position: relative;
 }
-
-.dot_chart-resp .value {
-    margin-left: 30px;
-}
-
-.dot_chart-temp .value { 
-    margin-left: 53px;
-}
-
 .title {
     opacity: .5;
     font-size: .7rem;

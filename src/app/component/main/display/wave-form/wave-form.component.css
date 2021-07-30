@@ -2,15 +2,16 @@
     position: absolute;
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
 .chart-header .value {
-    margin-left: 345px;
     font-size: 1.7rem;
 }
 
 .chart-container {
     height: 100%;
+    position: relative;
 }
 
 .title {
@@ -18,3 +19,4 @@
     font-size: .7rem;
     padding-left: 10px;
 }
+

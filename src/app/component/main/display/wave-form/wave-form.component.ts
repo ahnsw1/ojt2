@@ -24,13 +24,14 @@ export class WaveFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let totalCount = Math.ceil(document.getElementsByClassName("line_chart")[0].getBoundingClientRect().width * 6/4);
-    // for (let i = 0; i < 500; i++) {
-    for (let i = 0; i < totalCount; i++) {
+    let totalCount = Math.ceil(document.getElementsByClassName("line_chart")[0].getBoundingClientRect().width * 6 / 4);
+    for (let i = 0; i < 500; i++) {
+      // for (let i = 0; i < totalCount; i++) {
       this.ecgData[i] = { val: undefined, ts: i * 8 };
+      // this.resData[i] = { val: undefined, ts: i * 40 };
     }
 
-    for (let i = 0; i < totalCount / 2; i++) {
+    for (let i = 0; i < 500 / 2; i++) {
       this.resData[i] = { val: undefined, ts: i * 40 };
     }
 
@@ -45,15 +46,18 @@ export class WaveFormComponent implements OnInit {
               };
             }
             switch (this.ecgIndex) {
-              case Math.ceil(totalCount / 5):
+              case 99:
+                // case Math.ceil(totalCount / 5) + 9:
                 this.ecgIndex = -1;
                 break;
-              case Math.ceil(totalCount / 5) - 1:
+              case 98:
+                // case Math.ceil(totalCount / 5) - 1 + 9:
                 for (let i = 0; i < 5; i++) {
                   this.ecgData[5 * this.ecgIndex + 5 + i] = { ts: 40 * this.ecgIndex + (40 + 8 * i), val: undefined };
                 }
                 break;
-              case Math.ceil(totalCount / 5) - 2:
+              case 97:
+                // case Math.ceil(totalCount / 5) - 2 + 9:
                 for (let i = 0; i < 10; i++) {
                   this.ecgData[5 * this.ecgIndex + 5 + i] = { ts: 40 * this.ecgIndex + (40 + 8 * i), val: undefined };
                 }
@@ -70,41 +74,52 @@ export class WaveFormComponent implements OnInit {
           case "res":
             this.resData[this.resIndex] = { val: observer.dp.F1, ts: this.resIndex * 40 };
             switch (this.resIndex) {
-              case totalCount / 2 + 16: this.resIndex = -1; break;
-              case totalCount / 2 + 15:
+              case 249:
+              // case totalCount / 2 + 16:
+                this.resIndex = -1;
+                break;
+              case 248:
+              // case totalCount / 2 + 15:
                 this.resData[this.resIndex + 1] = { val: undefined, ts: this.resIndex * 40 };
                 break;
-              case totalCount / 2 + 14:
+              case 247:
+              // case totalCount / 2 + 14:
                 for (let i = 1; i < 3; i++) {
                   this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 };
                 }
                 break;
-              case totalCount / 2 + 13:
+              case 246:
+              // case totalCount / 2 + 13:
                 for (let i = 1; i < 4; i++) {
                   this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 };
                 }
                 break;
-              case totalCount / 2 + 12:
+              // case totalCount / 2 + 12:
+              case 245:
                 for (let i = 1; i < 5; i++) {
                   this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 };
                 }
                 break;
-              case totalCount / 2 + 11:
+              // case totalCount / 2 + 11:
+              case 244:
                 for (let i = 1; i < 6; i++) {
                   this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 };
                 }
                 break;
-              case totalCount / 2 + 10:
+              // case totalCount / 2 + 10:
+              case 243:
                 for (let i = 1; i < 7; i++) {
                   this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 };
                 }
                 break;
-              case totalCount / 2 + 9:
+              // case totalCount / 2 + 9:
+              case 242:
                 for (let i = 1; i < 8; i++) {
                   this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 };
                 }
                 break;
-              case totalCount / 2 + 8:
+              // case totalCount / 2 + 8:
+              case 241:
                 for (let i = 1; i < 9; i++) {
                   this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 };
                 }
