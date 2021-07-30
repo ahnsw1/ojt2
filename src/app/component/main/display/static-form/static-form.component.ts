@@ -56,19 +56,24 @@ export class StaticFormComponent implements OnInit {
 
     let firstIndex;
     let lastIndex;
+
     if (data.length <= 12 * 4) {
-      if (firstIndex === 0) {
-        firstIndex = 96;
-      } else {
-        firstIndex = data[0].index;
-      }
-        lastIndex = firstIndex + 12 * 4;
+      firstIndex = data[0].index;
     } else {
       firstIndex = data[data.length - 12 * 4].index;
-      lastIndex = data[data.length - 1].index;
+      data = data.slice(data.length - 12 * 4, data.length);
     }
+    let changeIndex = data.findIndex((item: any) => item.index === 0);
+    if (changeIndex > 0 && changeIndex < data.length - 1) { 
+      for (let i = changeIndex; i < data.length; i++) {
+        data[i].index += 96;
+      }
+    }
+
+    lastIndex = firstIndex + 12 * 4;
+
     xHRScale.domain([Math.floor(firstIndex / 4), Math.ceil(lastIndex / 4)]);
-    
+
     yHRScale.domain([d3.min(data, (d: any) => d.min), d3.max(data, (d: any) => d.max)]);
 
     const chart = hrG.append("g")
@@ -82,7 +87,11 @@ export class StaticFormComponent implements OnInit {
       .attr("width", hrWidth - margin.left - margin.right)
       .attr("stroke", "gray")
       .attr('transform', `translate(${margin.left - 1.5}, ${hrHeight - margin.bottom})`)
-      .call(d3.axisBottom(xHRScale).tickSizeInner(0).tickFormat((d: any) => d = d > 24 ? d - 24 : d))
+      .call(d3.axisBottom(xHRScale)
+        .tickSizeInner(0)
+        .tickFormat((d: any) => d = d > 24 ? d - 24 : d)
+      )
+      .call((g: any) => g.selectAll(".tick line").clone().attr("stroke-opacity", .1).attr("y1", -hrHeight + margin.bottom + margin.top))
       .select(".domain").remove();
 
     let min: any;
@@ -96,7 +105,12 @@ export class StaticFormComponent implements OnInit {
       .attr("stroke", "gray")
       .attr("transform", `translate(${margin.left}, ${margin.top})`)
       .call(d3.axisLeft(yHRScale).tickSizeInner(0).tickValues([min, max]).tickFormat(x => `${x}`))
+      .call((g: any) => g.selectAll(".tick line").clone()
+        .attr("stroke-opacity", 0.1)
+        .attr("x1", hrWidth - margin.left - margin.right))
       .select(".domain").remove()
+
+      const moveRightPx = id === "hr" ? 3.5 : 5;
 
     if (min !== max) {
       chart
@@ -113,19 +127,18 @@ export class StaticFormComponent implements OnInit {
             return yHRScale(d.max);
           }
         })
-        .attr("transform", `translate(${margin.right + 2}, ${margin.bottom})`)
+        .attr("transform", `translate(${margin.right + 2 + moveRightPx}, ${margin.bottom})`)
         .attr("width", "1px")
         .attr("fill", "gray")
         .attr("height", (d: any) => hrHeight - yHRScale(d.max) - margin.top - margin.bottom)
     }
-
     chart
       .selectAll("circle")
       .data(data)
       .enter()
       .append("circle")
       .attr("class", "circle")
-      .attr("transform", `translate(${margin.right + 2.6}, ${margin.bottom})`)
+      .attr("transform", `translate(${margin.right + 2.6 + moveRightPx}, ${margin.bottom + .3})`)
       .attr("cx", (d: any) => xHRScale((d.index + 1) / 4))
       .attr("cy", (d: any) => yHRScale(d.avg))
       .attr("r", 1.5)
