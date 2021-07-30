@@ -144,5 +144,4 @@ export class StaticFormComponent implements OnInit {
       .attr("r", 1.5)
       .style("fill", "red");
   }
-
 }
