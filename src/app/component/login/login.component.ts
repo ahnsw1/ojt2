@@ -30,6 +30,8 @@ export class LoginComponent implements OnInit {
       const hashArray = Array.from(new Uint8Array(hashBuffer));
       const result: string = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
       this.convertedPwd = result;
+
+      console.log(this.id, this.convertedPwd)
       
       this.auth.postLogin(this.id, this.convertedPwd)
         .subscribe(
