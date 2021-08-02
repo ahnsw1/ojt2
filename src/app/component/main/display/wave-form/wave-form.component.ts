@@ -26,10 +26,10 @@ export class WaveFormComponent implements OnInit {
   ngOnInit(): void {
     let totalCount = Math.floor(document.getElementsByClassName("line_chart")[0].getBoundingClientRect().width * 5 / 4);
     // let totalCount = Math.floor(document.getElementsByClassName("line_chart")[0].getBoundingClientRect().width + 100);
-    totalCount = 500;
-    if (totalCount % 5 !== 0) {
-      totalCount = Math.floor(totalCount / 10) * 10;
-    }
+    // totalCount = 500;
+    // if (totalCount % 5 !== 0) {
+    //   totalCount = Math.floor(totalCount / 10) * 10;
+    // }
 
     // for (let i = 0; i < 500; i++) {
     for (let i = 0; i < totalCount; i++) {
@@ -80,7 +80,7 @@ export class WaveFormComponent implements OnInit {
                 this.ecgData[5 * this.ecgIndex + 5 + i] = { ts: 40 * this.ecgIndex + (40 + 8 * i), val: undefined };
               }
             } 
-            else if (this.ecgData.length - this.ecgIndex * 5 !== 5) {
+            else if (this.ecgData.length - this.ecgIndex * 5 > 5) {
               for (let i = 0; i < this.ecgData.length - this.ecgIndex * 5 - 5; i++) {
                 this.ecgData[5 * this.ecgIndex + 5 + i] = { ts: 40 * this.ecgIndex + (40 + 8 * i), val: undefined };
               }
