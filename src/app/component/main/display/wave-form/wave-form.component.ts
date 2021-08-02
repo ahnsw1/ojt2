@@ -25,19 +25,12 @@ export class WaveFormComponent implements OnInit {
 
   ngOnInit(): void {
     let totalCount = Math.floor(document.getElementsByClassName("line_chart")[0].getBoundingClientRect().width * 5 / 4);
-    // let totalCount = Math.floor(document.getElementsByClassName("line_chart")[0].getBoundingClientRect().width + 100);
-    // totalCount = 500;
-    // if (totalCount % 5 !== 0) {
-    //   totalCount = Math.floor(totalCount / 10) * 10;
-    // }
 
-    // for (let i = 0; i < 500; i++) {
     for (let i = 0; i < totalCount; i++) {
       this.ecgData[i] = { val: undefined, ts: i * 8 };
-      // this.resData[i] = { val: undefined, ts: i * 40 };
     }
 
-    for (let i = 0; i < 500 / 2; i++) {
+    for (let i = 0; i < totalCount / 2; i++) {
       this.resData[i] = { val: undefined, ts: i * 40 };
     }
 
@@ -45,126 +38,85 @@ export class WaveFormComponent implements OnInit {
       if (observer.dv === this.deviceInfos.deviceAddress) {
         switch (this.title) {
           case "ecg":
-            for (let i = 0; i < 5; i++) {
-              this.ecgData[5 * this.ecgIndex + i] = {
-                ts: 40 * this.ecgIndex + 8 * i,
-                val: observer.dp.ecg[i]
-              };
-            }
-            // switch (this.ecgIndex) {
-            //   // case 99:
-            //   case Math.floor(totalCount / 5) - 1:
-            //     this.ecgIndex = -1;
-            //     break;
-            //   // case 98:
-            //   case Math.floor(totalCount / 5) - 2:
-            //     for (let i = 0; i < 5; i++) {
-            //       this.ecgData[5 * this.ecgIndex + 5 + i] = { ts: 40 * this.ecgIndex + (40 + 8 * i), val: undefined };
-            //     }
-            //     break;
-            //   // case 97:
-            //   case Math.floor(totalCount / 5) - 3:
-            //     for (let i = 0; i < 10; i++) {
-            //       this.ecgData[5 * this.ecgIndex + 5 + i] = { ts: 40 * this.ecgIndex + (40 + 8 * i), val: undefined };
-            //     }
-            //     break;
-            //   default:
-            //     for (let i = 0; i < 15; i++) {
-            //       this.ecgData[5 * this.ecgIndex + 5 + i] = { ts: 40 * this.ecgIndex + (40 + 8 * i), val: undefined };
-            //     }
-            //     break;
-            // }
+            //뒤에 20개 이상 남았을 때
+            if (this.ecgData.length - this.ecgIndex >= 20) {
+              for (let i = 0; i < 5; i++) {
+                this.ecgData[this.ecgIndex + i] = {
+                  ts: (this.ecgIndex + i) * 8,
+                  val: observer.dp.ecg[i]
+                };
+              }
 
-            if (this.ecgData.length - this.ecgIndex * 5 > 15) {
+              this.ecgIndex += 5;
+
               for (let i = 0; i < 15; i++) {
-                this.ecgData[5 * this.ecgIndex + 5 + i] = { ts: 40 * this.ecgIndex + (40 + 8 * i), val: undefined };
+                this.ecgData[this.ecgIndex + i] = { ts: (this.ecgIndex + i) * 8, val: undefined };
               }
-            } 
-            else if (this.ecgData.length - this.ecgIndex * 5 > 5) {
-              for (let i = 0; i < this.ecgData.length - this.ecgIndex * 5 - 5; i++) {
-                this.ecgData[5 * this.ecgIndex + 5 + i] = { ts: 40 * this.ecgIndex + (40 + 8 * i), val: undefined };
-              }
-            } else {
-              this.ecgIndex = -1;
-            }
-            
-            this.ecgIndex++;
-            this.drawChart(this.ecgData, this.index);
 
+            }
+            //뒤에 20개 미만, 5개 초과 남았을 때
+            else if (this.ecgData.length - this.ecgIndex < 20 && this.ecgData.length - this.ecgIndex > 5) {
+              for (let i = 0; i < 5; i++) {
+                this.ecgData[this.ecgIndex + i] = {
+                  ts: (this.ecgIndex + i) * 8,
+                  val: observer.dp.ecg[i]
+                };
+              }
+              this.ecgIndex += 5;
+
+              for (let i = 0; i < this.ecgData.length - this.ecgIndex; i++) {
+                this.ecgData[this.ecgIndex + i] = { ts: (this.ecgIndex + i) * 8, val: undefined };
+              }
+            }
+            //뒤에 5개 이하 남았을 때
+            else {
+              let a = 0;
+              for (let i = 0; i < 5; i++) {
+                if (i < this.ecgData.length - this.ecgIndex) {
+                  this.ecgData[this.ecgIndex + i] = {
+                    ts: (this.ecgIndex + i) * 8,
+                    val: observer.dp.ecg[i]
+                  };
+                } else {
+                  a = i;
+                  break;
+                }
+              }
+
+              this.ecgIndex = 0;
+              for (let i = 0; i < 5 - a; i++) {
+                this.ecgData[this.ecgIndex + i] = {
+                  ts: (this.ecgIndex + i) * 8,
+                  val: observer.dp.ecg[a + i]
+                }
+              }
+              this.ecgIndex += 5 - a;
+            }
+
+            this.drawChart(this.ecgData, this.index);
             break;
+
           case "res":
             this.resData[this.resIndex] = { val: observer.dp.F1, ts: this.resIndex * 40 };
-            // switch (this.resIndex) {
-            //   case 249:
-            //     // case totalCount / 2 + 16:
-            //     this.resIndex = -1;
-            //     break;
-            //   case 248:
-            //     // case totalCount / 2 + 15:
-            //     this.resData[this.resIndex + 1] = { val: undefined, ts: this.resIndex * 40 };
-            //     break;
-            //   case 247:
-            //     // case totalCount / 2 + 14:
-            //     for (let i = 1; i < 3; i++) {
-            //       this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 };
-            //     }
-            //     break;
-            //   case 246:
-            //     // case totalCount / 2 + 13:
-            //     for (let i = 1; i < 4; i++) {
-            //       this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 };
-            //     }
-            //     break;
-            //   // case totalCount / 2 + 12:
-            //   case 245:
-            //     for (let i = 1; i < 5; i++) {
-            //       this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 };
-            //     }
-            //     break;
-            //   // case totalCount / 2 + 11:
-            //   case 244:
-            //     for (let i = 1; i < 6; i++) {
-            //       this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 };
-            //     }
-            //     break;
-            //   // case totalCount / 2 + 10:
-            //   case 243:
-            //     for (let i = 1; i < 7; i++) {
-            //       this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 };
-            //     }
-            //     break;
-            //   // case totalCount / 2 + 9:
-            //   case 242:
-            //     for (let i = 1; i < 8; i++) {
-            //       this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 };
-            //     }
-            //     break;
-            //   // case totalCount / 2 + 8:
-            //   case 241:
-            //     for (let i = 1; i < 9; i++) {
-            //       this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 };
-            //     }
-            //     break;
-            //   default:
-            //     for (let i = 1; i < 7; i++) {
-            //       this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 };
-            //     }
-            //     break;
-            // }
-            if (this.resData.length - this.resIndex > 15) {
-              for (let i = 0; i < 15; i++) {
-                this.resData[this.resIndex + 5 + i] = { ts: 40 * this.ecgIndex + (40 * (i + 1)), val: undefined };
+            
+            //뒤에 11개 이상 남았을 때
+            if (this.resData.length - this.resIndex >= 11) {
+              for (let i = 1; i < 11; i++) {
+                this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 }
               }
-            } 
-            else if (this.ecgData.length - this.ecgIndex * 5 !== 5) {
-              for (let i = 0; i < this.ecgData.length - this.ecgIndex * 5 - 5; i++) {
-                this.ecgData[5 * this.ecgIndex + 5 + i] = { ts: 40 * this.ecgIndex + (40 + 8 * i), val: undefined };
-              }
-            } else {
-              this.ecgIndex = -1;
+              this.resIndex++;
             }
-
-            this.resIndex++;
+            //뒤에 11개 미만, 2개 이상 남았을 때
+            else if (this.resData.length - this.resIndex < 11 && this.resData.length - this.resIndex > 1) {
+              for (let i = 1; i < this.resData.length - this.resIndex; i++) {
+                this.resData[this.resIndex + i] = { val: undefined, ts: (this.resIndex + i) * 40 }
+              }
+              this.resIndex++;
+            }
+            //뒤에 2개 미만 남았을 때
+            else {
+              this.resIndex = 0;
+            }
             this.drawChart(this.resData, this.index);
             break;
           default:
@@ -192,10 +144,10 @@ export class WaveFormComponent implements OnInit {
     const g: any = svg.append("g")
     // .attr("width", width);
 
-    const xScale: any = d3.scaleLinear().range([0, width]);
+    const xScale: any = d3.scaleTime().range([0, width]);
     const yScale: any = d3.scaleLinear().range([height - margin.top, margin.bottom]);
 
-    xScale.domain(d3.extent(data, d => d.ts)).nice();
+    xScale.domain(d3.extent(data, d => d.ts));
     yScale.domain(d3.extent(data, d => d.val)).nice();
 
     const line: any = d3.line()
