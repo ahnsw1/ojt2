@@ -142,13 +142,12 @@ export class WaveFormComponent implements OnInit {
       .attr("width", width).attr("height", height);
 
     const g: any = svg.append("g")
-    // .attr("width", width);
 
     const xScale: any = d3.scaleTime().range([0, width]);
     const yScale: any = d3.scaleLinear().range([height - margin.top, margin.bottom]);
 
     xScale.domain(d3.extent(data, d => d.ts));
-    yScale.domain(d3.extent(data, d => d.val)).nice();
+    yScale.domain(d3.extent(data, d => d.val));
 
     const line: any = d3.line()
       .defined((d: any) => !isNaN(d.val))
@@ -169,5 +168,4 @@ export class WaveFormComponent implements OnInit {
       .attr("stroke-width", "2px")
       .attr("d", line);
   }
-
 }
