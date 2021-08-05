@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { merge, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,8 @@ export class WebsocketService {
   subject: Subject<any> = new Subject();
   annotationSubject: Subject<any> = new Subject();
 
-  constructor() { }
+  constructor() { 
+  }
 
   createObservableSocket(deviceList: any): Observable<any> 
   {

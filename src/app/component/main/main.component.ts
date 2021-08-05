@@ -18,7 +18,7 @@ export class MainComponent implements OnInit {
   mapWidth: number = 0;
   mapHeight: number = 0;
 
-  constructor(private wsService: WebsocketService, private dataService: DataService) {//TODO: css grid로 바꾸기
+  constructor(private wsService: WebsocketService, private dataService: DataService) {
     this.dataService.getDeviceIds("AA").then(deviceItems => {
       //소켓통신시작
       this.wsSubscription = this.wsService.createObservableSocket(deviceItems)
@@ -78,14 +78,12 @@ export class MainComponent implements OnInit {
       newDiv.style.left = `${event.clientX + 2}px`;
       newDiv.style.top = `${event.clientY + 6}px`;
       newDiv.style.width = `${width}px`;
-      // newDiv.style.height = `${height}px`;
       newDiv.style.background = 'rgba(29, 53, 87)';
       newDiv.style.textAlign = 'center';
       newDiv.style.fontSize = '.8rem';
       newDiv.style.border = '0.1px solid white';
       newDiv.style.borderRadius = '10px';
       newDiv.style.zIndex = '1';
-      // newDiv.style.opacity = '1';
 
       document.body.appendChild(newDiv);
 
@@ -135,7 +133,6 @@ export class MainComponent implements OnInit {
             }
             const grandChildDiv = document.createElement("div");
             grandChildDiv.style.width = `${width}px`;
-            // grandChildDiv.style.height = "30px";
             grandChildDiv.classList.add("contextchild")
             grandChildDiv.setAttribute("hasChild", "false");
             grandChildDiv.style.textAlign = 'center';
@@ -169,8 +166,6 @@ export class MainComponent implements OnInit {
     document.addEventListener("mouseover", e => {
       if (e.target instanceof HTMLElement) {
         if (e.target.getAttribute("class")?.includes("contextmenu")) {
-          // document.getElementsByClassName("selectedMenu")
-          // (document.querySelector(".selectedMenu") as HTMLElement).style.opacity = '1';
           document.querySelectorAll(".selectedMenu")?.forEach(elem => {
             if (elem.getAttribute("class")?.includes("selectedMenu")) {
               elem.classList.remove("selectedMenu");
@@ -182,8 +177,9 @@ export class MainComponent implements OnInit {
         }
         else if (e.target.getAttribute("class")?.includes("contextchild")) {
           e.target.style.opacity = '.7';
-        }
+        } 
       }
+
       document.addEventListener("mouseout", event => {
         if (e.target instanceof HTMLElement && (e.target.getAttribute("class")?.includes("contextchild") || !(event.target as HTMLElement).getAttribute("haschild"))) {
           e.target.style.opacity = '1';
