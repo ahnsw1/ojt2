@@ -69,3 +69,8 @@
     border: solid .1px rgba(211, 211, 211, 0.493);
     background-color: black;
 }
+
+.contextmenu:hover {
+    background-color: white;
+    opacity: .7;
+}
