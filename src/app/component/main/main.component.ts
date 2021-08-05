@@ -61,8 +61,8 @@ export class MainComponent implements OnInit {
 
       if (((event.target as Element).getAttribute("class")?.includes("contextmenu") || (event.target as Element).getAttribute("class")?.includes("contextchild"))) {
         //안쪽을 클릭했을 경우
-        if ((event.target as Element).getAttribute("hasChild") === "false") {
-          alert('실행');
+        if ((event.target as Element).getAttribute("class")?.includes("contextchild") || (event.target as Element).getAttribute("hasChild") === "false") {
+          alert('실행1');
         }
         return;
       }
@@ -155,7 +155,7 @@ export class MainComponent implements OnInit {
         } else {
           //안쪽을 클릭했을 경우
           if ((e.target as Element).getAttribute("hasChild") === "false") {
-            alert("실행");
+            alert("실행2");
             document.getElementById("grandChildContainer")?.remove();
             document.getElementById("newDiv")?.remove();
           }
