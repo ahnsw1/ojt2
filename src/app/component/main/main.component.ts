@@ -181,7 +181,7 @@ export class MainComponent implements OnInit {
       }
 
       document.addEventListener("mouseout", event => {
-        if (e.target instanceof HTMLElement && (e.target.getAttribute("class")?.includes("contextchild") || !(event.target as HTMLElement).getAttribute("haschild"))) {
+        if (e.target instanceof HTMLElement && (e.target.getAttribute("class")?.includes("contextchild"))) {
           e.target.style.opacity = '1';
         }
       })
