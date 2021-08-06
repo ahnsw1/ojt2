@@ -52,12 +52,12 @@ export class MainComponent implements OnInit {
     this.mapHeight = document.getElementById("map")!.getBoundingClientRect().height;
 
     const width = 120;
-    const height = 120;
 
     document.addEventListener("contextmenu", event => {
       event.preventDefault();
 
       const newDiv = document.createElement('div');
+      let grandChildContainer: HTMLElement;
 
       if (((event.target as Element).getAttribute("class")?.includes("contextmenu") || (event.target as Element).getAttribute("class")?.includes("contextchild"))) {
         //안쪽을 클릭했을 경우
@@ -73,10 +73,7 @@ export class MainComponent implements OnInit {
       }
 
       newDiv.setAttribute("id", "newDiv");
-
       newDiv.style.position = "absolute";
-      newDiv.style.left = `${event.clientX + 2}px`;
-      newDiv.style.top = `${event.clientY + 6}px`;
       newDiv.style.width = `${width}px`;
       newDiv.style.background = 'rgba(29, 53, 87)';
       newDiv.style.textAlign = 'center';
@@ -84,28 +81,28 @@ export class MainComponent implements OnInit {
       newDiv.style.border = '0.1px solid white';
       newDiv.style.borderRadius = '10px';
       newDiv.style.zIndex = '1';
-
-      document.body.appendChild(newDiv);
-
+      
       for (let i = 0; i < 5; i++) {
         const childDiv = document.createElement("div");
         childDiv.setAttribute("width", "100%");
         childDiv.setAttribute("id", `childDiv_${i}`)
-        childDiv.setAttribute("height", "30px");
+        childDiv.style.height = "16px";
         childDiv.classList.add("contextmenu");
         childDiv.classList.add("selectedMenu");
-
+        
         if (i !== 2) {
           childDiv.setAttribute("hasChild", 'true');
         } else {
           childDiv.setAttribute("hasChild", 'false');
         }
-
+        
         childDiv.style.padding = '5px';
         childDiv.style.color = 'white';
         childDiv.textContent = `설정 ${i}번째`;
         newDiv.append(childDiv);
       }
+
+      document.body.appendChild(newDiv);
 
       //하위 설정창 표시하기
       for (let i = 0; i < 5; i++) {
@@ -113,7 +110,7 @@ export class MainComponent implements OnInit {
 
         selectedChildDiv!.addEventListener("mouseover", e => {
           document.getElementById("grandChildContainer")?.remove();
-          const grandChildContainer = document.createElement("div");
+          grandChildContainer = document.createElement("div");
           grandChildContainer.setAttribute("id", "grandChildContainer");
           grandChildContainer.classList.add(`${i}`);
           grandChildContainer.style.position = 'absolute';
@@ -137,12 +134,27 @@ export class MainComponent implements OnInit {
             grandChildDiv.setAttribute("hasChild", "false");
             grandChildDiv.style.textAlign = 'center';
             grandChildDiv.style.padding = '5px';
+            grandChildDiv.style.height = '16px';
             grandChildDiv.textContent = `하위 설정 ${j} 번째`;
             grandChildContainer.appendChild(grandChildDiv);
           }
+
           document.body.appendChild(grandChildContainer);
         })
 
+      }
+
+      //가장자리로 갔을 때, 위치이동
+      if (window.innerHeight - event.clientY < 26 * 5) {
+        newDiv.style.top = `${event.clientY - 26 * 5}px`;
+      } else {
+        newDiv.style.top = `${event.clientY + 2}px`;
+      }
+
+      if (window.innerWidth - event.clientX < width) {
+        newDiv.style.left = `${window.innerWidth - width}px`;
+      } else {
+        newDiv.style.left = `${event.clientX + 2}px`;
       }
     })
 
@@ -174,6 +186,18 @@ export class MainComponent implements OnInit {
           })
           e.target.classList.add("selectedMenu");
           e.target.style.opacity = '.7';
+
+          //하위 메뉴가 아래쪽 가장자리에서 열릴때 올리기
+          if (document.querySelector(".contextchild") && window.innerHeight < e.target.getBoundingClientRect().top + document.querySelector(".contextchild")!.getBoundingClientRect().height * 5) {
+            (document.querySelector("#grandChildContainer") as HTMLElement).style.top = `${window.innerHeight - document.querySelector("#grandChildContainer")!.getBoundingClientRect().height}px`;
+          }
+
+          //하위 메뉴가 오른쪽 가장자리에서 열릴 때 옆으로 열기
+          if (document.querySelector(".contextchild") && window.innerWidth < document.querySelector(".contextchild")!.getBoundingClientRect().left + document.querySelector(".contextchild")!.getBoundingClientRect().width) {
+            (document.querySelector("#grandChildContainer") as HTMLElement).style.left = `${e.target.getBoundingClientRect().left - document.querySelector("#grandChildContainer")!.getBoundingClientRect().width}px`;
+          }
+
+
         }
         else if (e.target.getAttribute("class")?.includes("contextchild")) {
           e.target.style.opacity = '.7';
