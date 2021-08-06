@@ -18,8 +18,8 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if (this.auth.userSubject.value.result) {
-      return true;
     }
+    return true;
 
     alert("비밀번호를 확인해주세요");
     this.router.navigate(['/login']);

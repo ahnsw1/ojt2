@@ -1,5 +1,7 @@
 import { Component, OnInit, Type } from '@angular/core';
+import { fromEvent } from 'rxjs';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { debounceTime, map, pluck, tap, timeout } from 'rxjs/operators';
 import { WebsocketService } from 'src/app/service/websocket.service';
 import { DataService } from '../../service/data.service';
 
@@ -51,6 +53,86 @@ export class MainComponent implements OnInit {
     this.mapWidth = document.getElementById("map")!.getBoundingClientRect().width;
     this.mapHeight = document.getElementById("map")!.getBoundingClientRect().height;
 
+    const data: any = {
+      0: {
+        "title": "no.1",
+        "action": "",
+        "subtitle": {
+          0: {
+            "title": "[sub1] no.1", 
+            "action":"",
+            "subtitle": {
+              0: { "title": "[sub1-sub1] no.1", "action": "alert(1_1_1);", "subtitle": "" },
+              1: { "title": "[sub1-sub1] no.2", "action": "alert(1_1_2);", "subtitle": "" },
+              2: { "title": "[sub1-sub1] no.3", "action": "alert(1_1_3);", "subtitle": "" },
+              3: { "title": "[sub1-sub1] no.4", "action": "alert(1_1_4);", "subtitle": "" },
+            }
+          },
+          1: {
+            "title": "[sub1] no.2", 
+            "action": "",
+            "subtitle": {
+              0: { "title": "[sub1-sub2] no.1", "action": "alert(1_2_1);", "subtitle": "" },
+              1: { "title": "[sub1-sub2] no.2", "action": "alert(1_2_2);", "subtitle": "" },
+              2: { "title": "[sub1-sub2] no.3", "action": "alert(1_2_3);", "subtitle": "" },
+              3: { "title": "[sub1-sub2] no.4", "action": "alert(1_2_4);", "subtitle": "" },
+            }
+          },
+          2: {
+            "title": "[sub1] no.3",
+            "action": "",
+            "subtitle": {
+              0: { "title": "[sub1-sub3] no.1", "action": "alert(1_3_1);", "subtitle": "" },
+              1: { "title": "[sub1-sub3] no.2", "action": "alert(1_3_2);", "subtitle": "" },
+              2: { "title": "[sub1-sub3] no.3", "action": "alert(1_3_3);", "subtitle": "" },
+              3: { "title": "[sub1-sub3] no.4", "action": "alert(1_3_4);", "subtitle": "" },
+            }
+          }
+        }
+      },
+      1: {
+        "title": "no.2",
+        "action": "",
+        "subtitle": {
+          0: {
+            "title": "[sub2] no.1", 
+            "action": "" ,
+            "subtitle": {
+              0: { "title": "[sub2-sub1] no.1", "action": "alert(2_1_1);", "subtitle": "" },
+              1: { "title": "[sub2-sub1] no.2", "action": "alert(2_1_2);", "subtitle": "" },
+              2: { "title": "[sub2-sub1] no.3", "action": "alert(2_1_3);", "subtitle": "" },
+              3: { "title": "[sub2-sub1] no.4", "action": "alert(2_1_4);", "subtitle": "" },
+            }
+          },
+          1: {
+            "title": "[sub2] no.2", 
+            "action": "alert(2_2);",
+            "subtitle": ""
+          },
+          2: {
+            "title": "[sub2] no.3",
+            "action": "",
+            "subtitle": {
+              0: { "title": "[sub2-sub3] no.1", "action": "alert(2_3_1);", "subtitle": "" },
+              1: { "title": "[sub2-sub3] no.2", "action": "alert(2_3_2);", "subtitle": "" },
+              2: { "title": "[sub2-sub3] no.3", "action": "alert(2_3_3);", "subtitle": "" },
+              3: { "title": "[sub2-sub3] no.4", "action": "alert(2_3_4);", "subtitle": "" },
+            }
+          }
+        }
+      },
+
+    };
+
+    // this.getContextMenu(data);
+    this.getContextMenu1(data);
+  }
+
+  ngOnDestroy() {
+    this.closeSocket();
+  }
+
+  getContextMenu(data: any) {
     const width = 120;
 
     document.addEventListener("contextmenu", event => {
@@ -74,14 +156,13 @@ export class MainComponent implements OnInit {
 
       newDiv.setAttribute("id", "newDiv");
       newDiv.style.position = "absolute";
-      newDiv.style.width = `${width}px`;
       newDiv.style.background = 'rgba(29, 53, 87)';
       newDiv.style.textAlign = 'center';
       newDiv.style.fontSize = '.8rem';
       newDiv.style.border = '0.1px solid white';
       newDiv.style.borderRadius = '10px';
       newDiv.style.zIndex = '1';
-      
+
       for (let i = 0; i < 5; i++) {
         const childDiv = document.createElement("div");
         childDiv.setAttribute("width", "100%");
@@ -89,14 +170,14 @@ export class MainComponent implements OnInit {
         childDiv.style.height = "16px";
         childDiv.classList.add("contextmenu");
         childDiv.classList.add("selectedMenu");
-        
+
         if (i !== 2) {
           childDiv.setAttribute("hasChild", 'true');
         } else {
           childDiv.setAttribute("hasChild", 'false');
         }
-        
-        childDiv.style.padding = '5px';
+
+        childDiv.style.padding = '5px 10px';
         childDiv.style.color = 'white';
         childDiv.textContent = `설정 ${i}번째`;
         newDiv.append(childDiv);
@@ -117,7 +198,6 @@ export class MainComponent implements OnInit {
           grandChildContainer.style.top = `${selectedChildDiv?.getBoundingClientRect().top}px`;
           grandChildContainer.style.left = `${selectedChildDiv?.getBoundingClientRect().right! - 2}px`;
           grandChildContainer.style.color = 'white';
-
           grandChildContainer.style.background = 'rgba(29, 53, 87)';
           grandChildContainer.style.fontSize = '.8rem'
           grandChildContainer.style.borderRadius = '10px';
@@ -133,7 +213,7 @@ export class MainComponent implements OnInit {
             grandChildDiv.classList.add("contextchild")
             grandChildDiv.setAttribute("hasChild", "false");
             grandChildDiv.style.textAlign = 'center';
-            grandChildDiv.style.padding = '5px';
+            grandChildDiv.style.padding = '5px 10px';
             grandChildDiv.style.height = '16px';
             grandChildDiv.textContent = `하위 설정 ${j} 번째`;
             grandChildContainer.appendChild(grandChildDiv);
@@ -201,7 +281,7 @@ export class MainComponent implements OnInit {
         }
         else if (e.target.getAttribute("class")?.includes("contextchild")) {
           e.target.style.opacity = '.7';
-        } 
+        }
       }
 
       document.addEventListener("mouseout", event => {
@@ -212,7 +292,115 @@ export class MainComponent implements OnInit {
     })
   }
 
-  ngOnDestroy() {
-    this.closeSocket();
+  /**
+   * 
+   * @param data : {
+   *    [index: number]: {
+   *        "title": string,
+   *        "action": string, //javascript code. 없으면 빈값
+   *        "subtitle" : data //없으면 빈값.
+   *    }
+   * }
+   */
+  getContextMenu1(data: any) {
+    document.addEventListener("contextmenu", event => {
+      event.preventDefault();
+      document.querySelector("#depth_1")?.remove();
+      document.body.appendChild(this.createMenu(data, 1, event));
+    })
+
+    document.addEventListener("click", event => {
+      //외부클릭시 없애기
+      if(!(event.target as Element).classList.value.includes("depth")){
+        document.querySelector("#depth_1")?.remove();
+        return;
+      }
+      //내부 클릭시
+      if ((event.target as HTMLElement).getAttribute("action")?.length !== 0){
+        new Function((event.target as HTMLElement).getAttribute("action")!)();
+      }
+    })
+
+  }
+
+  /**
+   * data: {
+   *  0: {"title":"", "subtitle":""},
+   *  1: {"title":""},
+   *  2: {"title":"", "subtitle":""}
+   * }
+   * @param data 
+   */
+  private createMenu(data: any, depth: number, event: MouseEvent, currentIndex?: number): Element {
+    const container = document.createElement("div");
+    let parallelPadding = 10;
+    let verticalPadding = 5;
+    let minWidth = 50;
+
+    container.style.borderRadius = '8px';
+    container.style.border = '.1px solid white';
+    container.style.backgroundColor = '#4a4e69';
+    container.style.width = 'max-content';
+    container.style.minWidth = `${minWidth}px`;
+    container.style.textAlign = 'center';
+    container.style.color = 'white';
+    container.style.position = 'absolute';
+    container.style.zIndex = `${depth}`;
+
+
+    container.classList.add("container");
+
+    if (depth > 1) {
+      container.style.left = `${document.querySelector(`#depth_${depth - 1}`)!.getBoundingClientRect().width - 4}px`;
+      container.style.top = `${(event.target as Element).getBoundingClientRect().height * currentIndex!}px`;
+    } else {
+      container.style.left = `${event.clientX + 4}px`;
+      container.style.top = `${event.clientY}px`;
+    }
+
+    container.setAttribute("id", `depth_${depth}`)
+
+    const keys = Object.keys(data);
+
+    for (let i = 0; i < keys.length; i++) {
+      container.style.textAlign = 'center';
+
+      const item = document.createElement("div");
+      item.setAttribute("action", data[i].action);
+      item.classList.add(`depth_${depth}_${i}`)
+      item.classList.add("item");
+      item.textContent = data[i].title;
+
+      if (i !== 0) {
+        item.style.borderTop = '1px solid white';
+      }
+      item.style.padding = `${verticalPadding}px ${parallelPadding}px`;
+      item.style.minWidth = `${minWidth}px`;
+
+      container.appendChild(item);
+      
+      this.test(data, depth, i);
+    }
+    return container;
+  }
+  
+  test(data: any, depth: number, i: number) {
+    const testFn = (overEvent: any) => {
+      if ((overEvent.target as Element).classList.contains(`depth_${depth}_${i}`)) {
+        if ((overEvent.target as Element).classList.contains(`depth_${depth}_${i}`)) {
+          document.querySelectorAll(`#depth_${depth + 1}`)?.forEach(element => {
+            element.remove();
+          });
+        }
+        if (data[i].subtitle) {
+          return (overEvent.target as Element).appendChild(this.createMenu(data[i].subtitle, depth + 1, overEvent, i));
+        }
+      }
+      return ;
+    }
+    // document.addEventListener("click", testFn);
+    fromEvent(document, "mouseover").pipe().subscribe( observer => {
+      testFn(observer);
+    })
   }
 }
