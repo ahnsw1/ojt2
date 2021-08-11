@@ -1,7 +1,7 @@
 import { Component, OnInit, Type } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { debounceTime, map, pluck, tap, timeout } from 'rxjs/operators';
+import { debounceTime, delay, last, map, pluck, takeLast, tap, throttle, throttleTime, timeout } from 'rxjs/operators';
 import { WebsocketService } from 'src/app/service/websocket.service';
 import { DataService } from '../../service/data.service';
 
@@ -346,7 +346,7 @@ export class MainComponent implements OnInit {
     container.style.color = 'white';
     container.style.position = 'absolute';
     container.style.zIndex = `${depth}`;
-
+    container.style.cursor = 'pointer';
 
     container.classList.add("container");
 
@@ -374,33 +374,27 @@ export class MainComponent implements OnInit {
       if (i !== 0) {
         item.style.borderTop = '1px solid white';
       }
+
       item.style.padding = `${verticalPadding}px ${parallelPadding}px`;
       item.style.minWidth = `${minWidth}px`;
+      item.style.cursor = 'pointer';
 
       container.appendChild(item);
-      
-      this.test(data, depth, i);
+
+      fromEvent(item, "mouseover").pipe().subscribe( (observer: any) => {
+          if ((observer.target as Element).classList.contains(`depth_${depth}_${i}`)) {
+            if ((observer.target as Element).classList.contains(`depth_${depth}_${i}`)) {
+              document.querySelectorAll(`#depth_${depth + 1}`)?.forEach(element => {
+                element.remove();
+              });
+            }
+            if (data[i].subtitle) {
+              (observer.target as Element).appendChild(this.createMenu(data[i].subtitle, depth + 1, observer, i));
+            }
+          }
+          return ;
+        })
     }
     return container;
-  }
-  
-  test(data: any, depth: number, i: number) {
-    const testFn = (overEvent: any) => {
-      if ((overEvent.target as Element).classList.contains(`depth_${depth}_${i}`)) {
-        if ((overEvent.target as Element).classList.contains(`depth_${depth}_${i}`)) {
-          document.querySelectorAll(`#depth_${depth + 1}`)?.forEach(element => {
-            element.remove();
-          });
-        }
-        if (data[i].subtitle) {
-          return (overEvent.target as Element).appendChild(this.createMenu(data[i].subtitle, depth + 1, overEvent, i));
-        }
-      }
-      return ;
-    }
-    // document.addEventListener("click", testFn);
-    fromEvent(document, "mouseover").pipe().subscribe( observer => {
-      testFn(observer);
-    })
   }
 }
