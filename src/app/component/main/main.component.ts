@@ -373,6 +373,13 @@ export class MainComponent implements OnInit {
 
       if (i !== 0) {
         item.style.borderTop = '1px solid white';
+        
+        if (i === keys.length - 1) {
+          item.style.borderRadius = '0 0 8px 8px';
+        }
+      } 
+      else { 
+        item.style.borderRadius = '8px 8px 0 0';
       }
 
       item.style.padding = `${verticalPadding}px ${parallelPadding}px`;
@@ -389,8 +396,19 @@ export class MainComponent implements OnInit {
               });
             }
             if (data[i].subtitle) {
+              // (observer.target as Element).classList.add("selected");
               (observer.target as Element).appendChild(this.createMenu(data[i].subtitle, depth + 1, observer, i));
             }
+            
+            (observer.target as HTMLElement).style.backgroundColor = 'black';
+
+            for (let j = 0; j < keys.length; j++) {
+              if (i !== j) {
+                // document.querySelector(`.depth_${depth}_${j}`)?.classList.remove("selected");
+                (document.querySelector(`.depth_${depth}_${j}`) as HTMLElement).style.backgroundColor = 'rgb(74, 78, 105)';
+              }
+            }
+
           }
           return ;
         })

@@ -74,3 +74,12 @@
     background-color: white;
     opacity: .7;
 }
+
+.selected {
+    background: black;
+    font-size: xx-large;
+}
+
+.item:hover {
+    background-color: black;
+}
